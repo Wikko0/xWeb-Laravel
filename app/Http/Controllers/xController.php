@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character;
+use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_NEWS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -10,11 +13,9 @@ class xController extends Controller
 {
     public function index()
     {
-        $selectchars = DB::table('Character')
-            ->orderBy('Resets', 'desc')
+        $selectchars = Character::orderBy('Resets', 'desc')
             ->paginate(5);
-        $selectguilds = DB::table('Guild')
-            ->orderBy('Resets', 'desc')
+        $selectguilds = Character::orderBy('Resets', 'desc')
             ->paginate(5);
 
         // Top5 Characters
@@ -87,16 +88,13 @@ class xController extends Controller
                 '</tr>';
         }
         // News in home
-        $news = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'news')
+        $news = XWEB_NEWS::where('specific', '=', 'news')
             ->paginate('5');
 
-        $events = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'events')
+        $events = XWEB_NEWS::where('specific', '=', 'events')
             ->paginate('5');
 
-        $updates = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'updates')
+        $updates = XWEB_NEWS::where('specific', '=', 'updates')
             ->paginate('5');
 
 
@@ -118,12 +116,12 @@ class xController extends Controller
     }
     public function download()
     {
-        $mb = ['lite'=> DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->where('version', '=', 'lite')->first('mb'),
-            'full'=> DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->where('version', '=', 'full')->first('mb')];
+        $mb = ['lite'=> XWEB_DOWNLOAD::where('version', '=', 'lite')->first('mb'),
+            'full'=> XWEB_DOWNLOAD::where('version', '=', 'full')->first('mb')];
 
-        $data = ['litelink'=> DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->where('version', '=', 'lite')->get(),
-            'fulllink'=> DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->where('version', '=', 'full')->get(),
-            'update'=> DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->where('version', '=', 'update')->get()];
+        $data = ['litelink'=> XWEB_DOWNLOAD::where('version', '=', 'lite')->get(),
+            'fulllink'=> XWEB_DOWNLOAD::where('version', '=', 'full')->get(),
+            'update'=> XWEB_DOWNLOAD::where('version', '=', 'update')->get()];
         return view('download', $mb, $data);
     }
 
@@ -131,8 +129,7 @@ class xController extends Controller
     {
 
        // Select Character
-        $select = DB::table('Character')
-            ->orderBy('Resets', 'desc')
+        $select = Character::orderBy('Resets', 'desc')
             ->paginate(15);
 
 
@@ -218,16 +215,13 @@ class xController extends Controller
 
     public function news()
     {
-        $news = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'news')
+        $news = XWEB_NEWS::where('specific', '=', 'news')
             ->paginate('5');
 
-        $events = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'events')
+        $events = XWEB_NEWS::where('specific', '=', 'events')
             ->paginate('5');
 
-        $updates = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->where('specific', '=', 'updates')
+        $updates = XWEB_NEWS::where('specific', '=', 'updates')
             ->paginate('5');
 
         return view('news', ['news'=> $news, 'events'=> $events, 'updates'=> $updates]);
