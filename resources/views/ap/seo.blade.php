@@ -34,9 +34,10 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="/adminpanel/seo">
-                                {{csrf_field()}}
+                                @csrf
                                 @foreach($admin as $values)
                                 <div class="card-body">
+                                    <input type="hidden" class="form-control" id="id" name="id" value="{{$values->id}}">
                                     <div class="form-group">
                                         <label for="ServerName">Server Name</label>
                                         <input type="text" class="form-control" id="sname" name="sname" value="{{$values->sname}}">

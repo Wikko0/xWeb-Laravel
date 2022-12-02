@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\MEMB_INFO;
+use App\Models\XWEB_ADMINCP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 Use Storage;
@@ -46,8 +47,8 @@ class AdminController extends Controller
                 where('memb___id', '=', $request->login)
                 ->where('memb__pwd', '=', $request->password)
                 ->first();
-            $admin_data = DB::connection('XWEB')->table('XWEB_ADMINCP')
-                ->where('name', '=', $request->login)
+            $admin_data = XWEB_ADMINCP::
+                where('name', '=', $request->login)
                 ->first();
 
             if ($user_data && $admin_data) {
@@ -69,8 +70,7 @@ class AdminController extends Controller
 
     public function do_adminseo(Request $request)
     {
-    $update = DB::connection('XWEB')->table('XWEB_ADMINCP')
-        ->update(['sname' => $request->sname, 'stitle' => $request->stitle, 'sdescription' => $request->sdescription,
+    $update = XWEB_ADMINCP::where('id', $request->id)->update(['sname' => $request->sname, 'stitle' => $request->stitle, 'sdescription' => $request->sdescription,
             'skeywords' => $request->skeywords, 'surl' => $request->surl, 'sforum' => $request->sforum, 'sdiscord' => $request->sdiscord]);
 
     return redirect('adminpanel/seo');
