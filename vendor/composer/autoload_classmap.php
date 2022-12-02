@@ -25,6 +25,8 @@ return array(
     'App\\Http\\Middleware\\UserMiddleware' => $baseDir . '/app/Http/Middleware/UserMiddleware.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Character' => $baseDir . '/app/Models/Character.php',
+    'App\\Models\\MEMB_INFO' => $baseDir . '/app/Models/MEMB_INFO.php',
+    'App\\Models\\XWEB_ADMINCP' => $baseDir . '/app/Models/XWEB_ADMINCP.php',
     'App\\Models\\XWEB_DOWNLOAD' => $baseDir . '/app/Models/XWEB_DOWNLOAD.php',
     'App\\Models\\XWEB_NEWS' => $baseDir . '/app/Models/XWEB_NEWS.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

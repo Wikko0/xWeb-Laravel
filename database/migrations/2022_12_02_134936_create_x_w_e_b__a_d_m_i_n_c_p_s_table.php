@@ -13,9 +13,16 @@ class CreateXWEBADMINCPSTable extends Migration
      */
     public function up()
     {
-        Schema::create('x_w_e_b__a_d_m_i_n_c_p_s', function (Blueprint $table) {
+        Schema::connection('XWEB')->create('XWEB_ADMINCP', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name')->nullable();
+            $table->string('sname')->nullable();
+            $table->text('stitle')->nullable();
+            $table->text('sdescription')->nullable();
+            $table->text('skeywords')->nullable();
+            $table->text('surl')->nullable();
+            $table->text('sforum')->nullable();
+            $table->text('sdiscord')->nullable();
         });
     }
 
@@ -26,6 +33,6 @@ class CreateXWEBADMINCPSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('x_w_e_b__a_d_m_i_n_c_p_s');
+        Schema::dropIfExists('XWEB_ADMINCP');
     }
 }

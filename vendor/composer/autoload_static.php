@@ -535,6 +535,8 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Http\\Middleware\\UserMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/UserMiddleware.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Character' => __DIR__ . '/../..' . '/app/Models/Character.php',
+        'App\\Models\\MEMB_INFO' => __DIR__ . '/../..' . '/app/Models/MEMB_INFO.php',
+        'App\\Models\\XWEB_ADMINCP' => __DIR__ . '/../..' . '/app/Models/XWEB_ADMINCP.php',
         'App\\Models\\XWEB_DOWNLOAD' => __DIR__ . '/../..' . '/app/Models/XWEB_DOWNLOAD.php',
         'App\\Models\\XWEB_NEWS' => __DIR__ . '/../..' . '/app/Models/XWEB_NEWS.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
