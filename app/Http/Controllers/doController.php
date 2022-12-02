@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\MEMB_INFO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,7 @@ class doController extends Controller
             'checkbox'=>'required'
         ]);
 
-        DB::table('MEMB_INFO')->insert([
+        MEMB_INFO::insert([
             'memb___id' => $request->login,
             'memb__pwd' => $request->pass,
             'memb_name' => $request->login,
@@ -40,8 +41,8 @@ class doController extends Controller
 
     public function do_login(Request $request)
     {
-        $user_data = DB::table('MEMB_INFO')
-            ->where('memb___id', '=', $request->login)
+        $user_data = MEMB_INFO::
+            where('memb___id', '=', $request->login)
             ->where('memb__pwd', '=', $request->password)
             ->first();
 

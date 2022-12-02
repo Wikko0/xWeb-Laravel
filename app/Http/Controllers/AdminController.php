@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character;
+use App\Models\MEMB_INFO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 Use Storage;
@@ -16,8 +18,8 @@ class AdminController extends Controller
         if(session('Admin')) {
 
 
-            $accinfo = DB::Table('MEMB_INFO')->count();
-            $charinfo = DB::Table('Character')->count();
+            $accinfo = MEMB_INFO::count();
+            $charinfo = Character::count();
 
 
             return view('ap.home', ['accinfo' => $accinfo, 'charinfo' => $charinfo]);
@@ -40,8 +42,8 @@ class AdminController extends Controller
     {
 
 
-            $user_data = DB::table('MEMB_INFO')
-                ->where('memb___id', '=', $request->login)
+            $user_data = MEMB_INFO::
+                where('memb___id', '=', $request->login)
                 ->where('memb__pwd', '=', $request->password)
                 ->first();
             $admin_data = DB::connection('XWEB')->table('XWEB_ADMINCP')

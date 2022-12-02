@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\MEMB_INFO;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_NEWS;
 use Illuminate\Http\Request;
@@ -111,7 +112,7 @@ class xController extends Controller
     }
     public function account_panel()
     {
-        $data = ['UserInfo'=> DB::Table('MEMB_INFO')->where('memb___id', '=', session('User'))->first()];
+        $data = ['UserInfo'=> MEMB_INFO::where('memb___id', '=', session('User'))->first()];
         return view('user.account-panel', $data);
     }
     public function download()
@@ -139,15 +140,13 @@ class xController extends Controller
 
         if(isset($search))
         {
-            $select = DB::table('Character')
-                ->Where('Name', 'LIKE', "%{$search}%")
+            $select = Character::where('Name', 'LIKE', "%{$search}%")
                 ->paginate(15);
 
         }
         if(isset($searchby))
         {
-            $select = DB::table('Character')
-                ->Where('Class', '=', "{$searchby}")
+            $select = Character::where('Class', '=', "{$searchby}")
                 ->paginate(15);
         }
 
