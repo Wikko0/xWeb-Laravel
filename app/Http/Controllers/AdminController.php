@@ -6,6 +6,7 @@ use App\Models\Character;
 use App\Models\MEMB_INFO;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
+use App\Models\XWEB_ANNOUNCE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -86,13 +87,16 @@ class AdminController extends Controller
 
     public function adminannounce()
     {
-        return view('ap.announce');
+        $select = XWEB_ANNOUNCE::first();
+        return view('ap.announce', ['announce_config' => $select]);
     }
 
     public function do_adminannounce(Request $request)
     {
-        $update = DB::connection('XWEB')->table('XWEB_ANNOUNCE')
-            ->update(['status' => $request->status, 'date' => $request->date, 'title' => $request->title]);
+
+        XWEB_ANNOUNCE::updateOrCreate(
+            ['id' => 1],
+            ['status' => $request->status, 'date' => $request->date, 'title' => $request->title]);
         return redirect('adminpanel/announce');
     }
 

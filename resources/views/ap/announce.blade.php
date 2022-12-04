@@ -25,6 +25,26 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <div class="col-md-12">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                            </button>
+                            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                            <ul>{{session('success')}}</ul>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                            </button>
+                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                            @foreach ($errors->all() as $error)
+                                <ul>{{ $error }}</ul>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
                 <div class="row">
 
                     <div class="col-md-12">
@@ -36,16 +56,23 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="/adminpanel/announce">
-                                {{csrf_field()}}
-                                @foreach($announce as $values)
+                                @csrf
                                 <div class="card-body">
                                     <div class="btn-group btn-group-toggle mb-5" data-toggle="buttons">
                                         <label class="mr-5" for="Status">Status</label>
                                         <label class="btn bg-olive">
-                                            <input type="radio" name="status" id="option_b1" value="1" autocomplete="off" @if ($values->status==1) checked @endif> On
+                                            @if($announce_config)
+                                            <input type="radio" name="status" id="option_b1" value="1" autocomplete="off" @if ($announce_config->status==1) checked @endif> On
+                                            @else
+                                                <input type="radio" name="status" id="option_b1" value="1" autocomplete="off" checked> On
+                                            @endif
                                         </label>
                                         <label class="btn btn-secondary">
-                                            <input type="radio" name="status" id="option_b2" value="2" @if ($values->status==2) checked @endif> Off
+                                            @if($announce_config)
+                                            <input type="radio" name="status" id="option_b2" value="2" @if ($announce_config->status==2) checked @endif> Off
+                                            @else
+                                                <input type="radio" name="status" id="option_b2" value="2" > Off
+                                            @endif
                                         </label>
                                     </div>
 
@@ -54,7 +81,7 @@
                             <div class="form-group">
                                 <label>Date and time:</label>
                                 <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                    <input type="datetime" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{date('m/d/Y h:i A', strtotime($values->date))}}" name="date"/>
+                                    <input type="datetime" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{date('m/d/Y h:i A', strtotime($announce_config->date ?? null))}}" name="date"/>
                                     <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
@@ -64,16 +91,14 @@
 
                                     <div class="form-group">
                                         <label for="AnnounceTitle">Announce Title</label>
-                                        <input type="text" max="50" class="form-control" id="title" name="title" value="{{$values->title}}">
+                                        <input type="text" max="50" class="form-control" id="title" name="title" placeholder="{{$announce_config->title ?? 'Enter Title'}}" value="{{$announce_config->title ?? null}}">
                                     </div>
-
-
-                                @endforeach
 
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary col-12">Submit</button>
+                                </div>
                                 </div>
                             </form>
                         </div>
@@ -81,7 +106,7 @@
 
                     </div>
 
-
+                </div>
             </div>
         </section>
         <!-- /.content -->
