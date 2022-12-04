@@ -16,13 +16,14 @@ class Controller extends BaseController
     public function __construct() {
         /* All Variable */
         $admin = DB::connection('XWEB')->Table('XWEB_ADMINCP')->get();
+        $adminname = DB::connection('XWEB')->Table('XWEB_ADMINLOGIN')->get();
         $announce = DB::connection('XWEB')->Table('XWEB_ANNOUNCE')->get();
         $download = DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->get();
         $event = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
         $boss = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
         $slider = DB::connection('XWEB')->Table('XWEB_SLIDERS')->get();
         $hof = DB::connection('XWEB')->Table('XWEB_HOF')->get();
-        View::share(['admin' => $admin, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
+        View::share(['admin' => $admin,'adminname' => $adminname, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
 
         /* News System */
         $new_news = DB::connection('XWEB')->Table('XWEB_NEWS')->where('specific', '=', 'news')->get();

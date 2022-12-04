@@ -36,7 +36,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{asset('/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -108,9 +108,9 @@
                     <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    @foreach($admin as $adminname)
+                    @foreach($adminname as $name)
 
-                        <a href="#" class="d-block">{{ $adminname->name }}</a>
+                        <a href="#" class="d-block">{{ $name->admin }}</a>
 
                     @endforeach
                 </div>

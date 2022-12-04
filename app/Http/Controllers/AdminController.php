@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use App\Models\MEMB_INFO;
 use App\Models\XWEB_ADMINCP;
+use App\Models\XWEB_ADMINLOGIN;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 Use Storage;
@@ -42,17 +43,13 @@ class AdminController extends Controller
     public function do_adminlogin(Request $request)
     {
 
-
-            $user_data = MEMB_INFO::
-                where('memb___id', '=', $request->login)
-                ->where('memb__pwd', '=', $request->password)
-                ->first();
-            $admin_data = XWEB_ADMINCP::
-                where('name', '=', $request->login)
+            $admin_data = XWEB_ADMINLOGIN::
+                where('admin', '=', $request->login)
+                ->where('password', '=', $request->password)
                 ->first();
 
-            if ($user_data && $admin_data) {
-                $request->session()->put('Admin', $user_data->memb___id);
+            if ($admin_data) {
+                $request->session()->put('Admin', $admin_data->admin);
 
                 return redirect('adminpanel');
 

@@ -15,7 +15,6 @@ class CreateXWEBADMINCPSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_ADMINCP', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
             $table->string('sname')->nullable();
             $table->text('stitle')->nullable();
             $table->text('sdescription')->nullable();

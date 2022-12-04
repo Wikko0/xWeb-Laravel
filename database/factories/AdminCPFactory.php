@@ -17,7 +17,6 @@ class AdminCPFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'test',
             'sname' => 'XWeb Server',
             'stitle' => 'XWeb',
             'sdescription' => 'MU Online',
