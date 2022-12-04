@@ -8,16 +8,16 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-Use Storage;
+use Storage;
 use App\Rules\SepareteTime;
 use Illuminate\Validation\Validator;
-Use File;
+use File;
 
 class AdminController extends Controller
 {
     public function adminhome()
     {
-        if(session('Admin')) {
+        if (session('Admin')) {
 
 
             $accinfo = MEMB_INFO::count();
@@ -25,12 +25,22 @@ class AdminController extends Controller
 
 
             return view('ap.home', ['accinfo' => $accinfo, 'charinfo' => $charinfo]);
-        }
-        else
-        {
+        } else {
             return redirect('adminpanel/login');
         }
 
+    }
+
+    public function panel()
+    {
+        return view('ap.adminlogin');
+    }
+
+    public function do_panel(Request $request)
+    {
+        XWEB_ADMINLOGIN::where('id', $request->id)->update(['admin' => $request->name, 'password' => $request->password]);
+
+        return redirect()->back()->withSuccess('You have changed admin data successfully!');
     }
 
     public function adminlogin()
@@ -43,19 +53,19 @@ class AdminController extends Controller
     public function do_adminlogin(Request $request)
     {
 
-            $admin_data = XWEB_ADMINLOGIN::
-                where('admin', '=', $request->login)
-                ->where('password', '=', $request->password)
-                ->first();
+        $admin_data = XWEB_ADMINLOGIN::
+        where('admin', '=', $request->login)
+            ->where('password', '=', $request->password)
+            ->first();
 
-            if ($admin_data) {
-                $request->session()->put('Admin', $admin_data->admin);
+        if ($admin_data) {
+            $request->session()->put('Admin', $admin_data->admin);
 
-                return redirect('adminpanel');
+            return redirect('adminpanel');
 
-            } else {
-                return redirect()->back()->with('errors', 'Wrong password, account doesn\'t exist or you arent Admin');
-            }
+        } else {
+            return redirect()->back()->with('errors', 'Wrong password, account doesn\'t exist or you arent Admin');
+        }
 
     }
 
@@ -67,10 +77,10 @@ class AdminController extends Controller
 
     public function do_adminseo(Request $request)
     {
-    $update = XWEB_ADMINCP::where('id', $request->id)->update(['sname' => $request->sname, 'stitle' => $request->stitle, 'sdescription' => $request->sdescription,
+        XWEB_ADMINCP::where('id', $request->id)->update(['sname' => $request->sname, 'stitle' => $request->stitle, 'sdescription' => $request->sdescription,
             'skeywords' => $request->skeywords, 'surl' => $request->surl, 'sforum' => $request->sforum, 'sdiscord' => $request->sdiscord]);
 
-    return redirect('adminpanel/seo');
+        return redirect()->back()->withSuccess('You have changed SEO information successfully!');
     }
 
 
@@ -88,7 +98,7 @@ class AdminController extends Controller
 
     public function charclass()
     {
-        $class = ['char'=>DB::connection('XWEB')->Table('XWEB_CHARCLASS')->get()];
+        $class = ['char' => DB::connection('XWEB')->Table('XWEB_CHARCLASS')->get()];
 
         return view('ap.charclass', $class);
     }
@@ -96,24 +106,24 @@ class AdminController extends Controller
     public function do_charclass(Request $request)
     {
 
-   foreach ($request->Personid as $i => $id) {
-       $newid = $request->id;
-       $classname = $request->classname;
-       $shortname = $request->shortname;
-       $maxlevel = $request->maxlevel;
-       $ppl = $request->ppl;
-       $update = DB::connection('XWEB')->table('XWEB_CHARCLASS')
-           ->where('Personid', $id)
-           ->update(
-               [
-                   'id' => $newid[$i],
-                   'classname' => $classname[$i],
-                   'shortname' => $shortname[$i],
-                   'maxlevel' => $maxlevel[$i],
-                   'ppl' => $ppl[$i]
-               ]);
+        foreach ($request->Personid as $i => $id) {
+            $newid = $request->id;
+            $classname = $request->classname;
+            $shortname = $request->shortname;
+            $maxlevel = $request->maxlevel;
+            $ppl = $request->ppl;
+            $update = DB::connection('XWEB')->table('XWEB_CHARCLASS')
+                ->where('Personid', $id)
+                ->update(
+                    [
+                        'id' => $newid[$i],
+                        'classname' => $classname[$i],
+                        'shortname' => $shortname[$i],
+                        'maxlevel' => $maxlevel[$i],
+                        'ppl' => $ppl[$i]
+                    ]);
 
-   }
+        }
 
         return redirect('adminpanel/charclass');
     }
@@ -125,10 +135,10 @@ class AdminController extends Controller
 
     public function do_download(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'unique:XWEB.XWEB_DOWNLOAD,name',
-            'link'=>'active_url',
-            'mb'=>'max:15'
+        $this->validate($request, [
+            'name' => 'unique:XWEB.XWEB_DOWNLOAD,name',
+            'link' => 'active_url',
+            'mb' => 'max:15'
         ]);
 
         $insert = DB::connection('XWEB')->table('XWEB_DOWNLOAD')
@@ -142,8 +152,7 @@ class AdminController extends Controller
     public function do_download_delete(Request $request)
     {
 
-        foreach ($request->id as $key => $items)
-        {
+        foreach ($request->id as $key => $items) {
 
             $delete = DB::connection('XWEB')->table('XWEB_DOWNLOAD')
                 ->where('id', $items)
@@ -162,32 +171,31 @@ class AdminController extends Controller
 
     public function do_event(Request $request)
     {
-        $this->validate($request,[
-            'everyday'=> [new SepareteTime(), 'nullable'],
-            'monday'=> [new SepareteTime(), 'nullable'],
-            'tuesday'=> [new SepareteTime(), 'nullable'],
-            'wednesday'=> [new SepareteTime(), 'nullable'],
-            'thursday'=> [new SepareteTime(), 'nullable'],
-            'friday'=> [new SepareteTime(), 'nullable'],
-            'saturday'=> [new SepareteTime(), 'nullable'],
-            'sunday'=> [new SepareteTime(), 'nullable'],
+        $this->validate($request, [
+            'everyday' => [new SepareteTime(), 'nullable'],
+            'monday' => [new SepareteTime(), 'nullable'],
+            'tuesday' => [new SepareteTime(), 'nullable'],
+            'wednesday' => [new SepareteTime(), 'nullable'],
+            'thursday' => [new SepareteTime(), 'nullable'],
+            'friday' => [new SepareteTime(), 'nullable'],
+            'saturday' => [new SepareteTime(), 'nullable'],
+            'sunday' => [new SepareteTime(), 'nullable'],
 
         ]);
 
         $decode = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
 
 
-        foreach ($decode['events']['event_timers'] as $value)
-        {
+        foreach ($decode['events']['event_timers'] as $value) {
             $name = $request->event;
             $days = $request->days;
-            if(in_array(0, $days)){
+            if (in_array(0, $days)) {
                 $days = 0;
             }
-            if($days == 0){
+            if ($days == 0) {
                 $time = $request->everyday;
             }
-            if(!is_array($days)){
+            if (!is_array($days)) {
                 $config = ['name' => $name, 'days' => $time];
             } else {
                 $d = [];
@@ -223,10 +231,10 @@ class AdminController extends Controller
         $decode = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
 
 
-        foreach($decode['events']['event_timers'] as $key => $element) {
+        foreach ($decode['events']['event_timers'] as $key => $element) {
 
             //check the property of every element
-            if($request->name == $element['name']){
+            if ($request->name == $element['name']) {
                 unset($decode['events']['event_timers'][$key]);
             }
 
@@ -246,32 +254,31 @@ class AdminController extends Controller
 
     public function do_boss(Request $request)
     {
-        $this->validate($request,[
-            'everyday'=> [new SepareteTime(), 'nullable'],
-            'monday'=> [new SepareteTime(), 'nullable'],
-            'tuesday'=> [new SepareteTime(), 'nullable'],
-            'wednesday'=> [new SepareteTime(), 'nullable'],
-            'thursday'=> [new SepareteTime(), 'nullable'],
-            'friday'=> [new SepareteTime(), 'nullable'],
-            'saturday'=> [new SepareteTime(), 'nullable'],
-            'sunday'=> [new SepareteTime(), 'nullable'],
+        $this->validate($request, [
+            'everyday' => [new SepareteTime(), 'nullable'],
+            'monday' => [new SepareteTime(), 'nullable'],
+            'tuesday' => [new SepareteTime(), 'nullable'],
+            'wednesday' => [new SepareteTime(), 'nullable'],
+            'thursday' => [new SepareteTime(), 'nullable'],
+            'friday' => [new SepareteTime(), 'nullable'],
+            'saturday' => [new SepareteTime(), 'nullable'],
+            'sunday' => [new SepareteTime(), 'nullable'],
 
         ]);
 
         $decode = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
 
 
-        foreach ($decode['events']['event_timers'] as $value)
-        {
+        foreach ($decode['events']['event_timers'] as $value) {
             $name = $request->event;
             $days = $request->days;
-            if(in_array(0, $days)){
+            if (in_array(0, $days)) {
                 $days = 0;
             }
-            if($days == 0){
+            if ($days == 0) {
                 $time = $request->everyday;
             }
-            if(!is_array($days)){
+            if (!is_array($days)) {
                 $config = ['name' => $name, 'days' => $time];
             } else {
                 $d = [];
@@ -307,10 +314,10 @@ class AdminController extends Controller
         $decode = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
 
 
-        foreach($decode['events']['event_timers'] as $key => $element) {
+        foreach ($decode['events']['event_timers'] as $key => $element) {
 
             //check the property of every element
-            if($request->name == $element['name']){
+            if ($request->name == $element['name']) {
                 unset($decode['events']['event_timers'][$key]);
             }
 
@@ -323,28 +330,28 @@ class AdminController extends Controller
 
     public function slider()
     {
-        $get = ['slider'=>DB::connection('XWEB')->Table('XWEB_SLIDERS')->get()];
+        $get = ['slider' => DB::connection('XWEB')->Table('XWEB_SLIDERS')->get()];
         return view('ap.slider', $get);
     }
 
     public function slider_upload(Request $request)
     {
 
-        $this->validate($request,[
-            'image'=>'dimensions:min_width=884,min_height=374,max_width=884,max_height=374|mimes:jpg|required|max:10000'
-        ],['image.dimensions'=>'Image must be at least 884 x 374 pixels']);
+        $this->validate($request, [
+            'image' => 'dimensions:min_width=884,min_height=374,max_width=884,max_height=374|mimes:jpg|required|max:10000'
+        ], ['image.dimensions' => 'Image must be at least 884 x 374 pixels']);
 
-        $id=DB::connection('XWEB')->table('XWEB_SLIDERS')->latest('id')->first();
-        $last=$id->id ?? 0;
+        $id = DB::connection('XWEB')->table('XWEB_SLIDERS')->latest('id')->first();
+        $last = $id->id ?? 0;
         $next_id = ++$last;
-        $name = 'slider-img'.$next_id;
+        $name = 'slider-img' . $next_id;
 
         $insert = DB::connection('XWEB')->table('XWEB_SLIDERS')
             ->insert(['name' => $name]);
 
 
         $makeImage = $request->file('image');
-        $makeImage->move(public_path().'/images/', $name.'.jpg');
+        $makeImage->move(public_path() . '/images/', $name . '.jpg');
 
         return redirect()->back()->withSuccess('You have added this slider successfully!');
     }
@@ -353,12 +360,11 @@ class AdminController extends Controller
     {
 
         $name = $request->name;
-        $ImagePath = public_path('images/'.$name.'.jpg');
+        $ImagePath = public_path('images/' . $name . '.jpg');
         if (File::exists($ImagePath)) {
             File::delete($ImagePath);
         }
-        foreach ($request->id as $key => $items)
-        {
+        foreach ($request->id as $key => $items) {
             $delete = DB::connection('XWEB')->table('XWEB_SLIDERS')
                 ->where('id', $items)
                 ->delete();
@@ -388,8 +394,7 @@ class AdminController extends Controller
 
     public function news_delete(Request $request)
     {
-        foreach ($request->id as $key => $id)
-        {
+        foreach ($request->id as $key => $id) {
 
             $delete = DB::connection('XWEB')->table('XWEB_NEWS')
                 ->where('id', $id)
@@ -419,8 +424,7 @@ class AdminController extends Controller
 
     public function events_delete(Request $request)
     {
-        foreach ($request->id as $key => $id)
-        {
+        foreach ($request->id as $key => $id) {
 
             $delete = DB::connection('XWEB')->table('XWEB_NEWS')
                 ->where('id', $id)
@@ -450,8 +454,7 @@ class AdminController extends Controller
 
     public function updates_delete(Request $request)
     {
-        foreach ($request->id as $key => $id)
-        {
+        foreach ($request->id as $key => $id) {
 
             $delete = DB::connection('XWEB')->table('XWEB_NEWS')
                 ->where('id', $id)
@@ -463,7 +466,7 @@ class AdminController extends Controller
 
     public function hof()
     {
-        $class = ['char'=>DB::connection('XWEB')->Table('XWEB_HOF')->get()];
+        $class = ['char' => DB::connection('XWEB')->Table('XWEB_HOF')->get()];
         return view('ap.hof', $class);
     }
 
@@ -479,28 +482,28 @@ class AdminController extends Controller
 
     public function hofswitch()
     {
-        $class = ['char'=>DB::connection('XWEB')->Table('XWEB_HOF')->get()];
+        $class = ['char' => DB::connection('XWEB')->Table('XWEB_HOF')->get()];
         return view('ap.hofswitch', $class);
     }
 
-    public function hof_switch(Request $request) {
-        foreach ($request->id as $i => $id)
-        {
-        $switch = $request->switch[$i] ?? null;
+    public function hof_switch(Request $request)
+    {
+        foreach ($request->id as $i => $id) {
+            $switch = $request->switch[$i] ?? null;
 
-        if ($switch == true) {
-            $switch = "Yes";
-        } else {
-            $switch = "No";
+            if ($switch == true) {
+                $switch = "Yes";
+            } else {
+                $switch = "No";
+            }
+
+            $update = DB::connection('XWEB')->table('XWEB_HOF')
+                ->where('name', $request->name[$i])
+                ->update(
+                    [
+                        'status' => $switch,
+                    ]);
         }
-
-        $update = DB::connection('XWEB')->table('XWEB_HOF')
-            ->where('name', $request->name[$i])
-            ->update(
-                [
-                    'status' => $switch,
-                ]);
-    }
 
         return redirect()->back()->withSuccess('You have added this updates HOF successfully!');
 
@@ -508,7 +511,7 @@ class AdminController extends Controller
 
     public function reset()
     {
-        $db = ['reset'=>DB::connection('XWEB')->Table('XWEB_RESET')->get()];
+        $db = ['reset' => DB::connection('XWEB')->Table('XWEB_RESET')->get()];
         return view('ap.reset', $db);
     }
 
@@ -533,7 +536,7 @@ class AdminController extends Controller
 
     public function addstats()
     {
-        $db = ['addstats'=>DB::connection('XWEB')->Table('XWEB_ADDSTATS')->get()];
+        $db = ['addstats' => DB::connection('XWEB')->Table('XWEB_ADDSTATS')->get()];
         return view('ap.addstats', $db);
     }
 
@@ -548,7 +551,7 @@ class AdminController extends Controller
 
     public function grandreset()
     {
-        $db = ['greset'=>DB::connection('XWEB')->Table('XWEB_GRANDRESET')->get()];
+        $db = ['greset' => DB::connection('XWEB')->Table('XWEB_GRANDRESET')->get()];
         return view('ap.grandreset', $db);
     }
 

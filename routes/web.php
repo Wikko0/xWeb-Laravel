@@ -44,6 +44,8 @@ Route::post('/grand-reset', [UserController::class, 'do_grandreset']);
 
 // Admin Panel
 Route::get('/adminpanel/login', [AdminController::class, 'adminlogin']);
+Route::get('/adminpanel/panel', [AdminController::class, 'panel']);
+Route::post('/adminpanel/panel', [AdminController::class, 'do_panel']);
 Route::get('/adminpanel', [AdminController::class, 'adminhome'])->middleware('admin');
 Route::get('/adminpanel/seo', [AdminController::class, 'adminseo'])->middleware('admin');
 Route::get('/adminpanel/announce', [AdminController::class, 'adminannounce'])->middleware('admin');

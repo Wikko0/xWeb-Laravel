@@ -105,7 +105,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{asset('/dist/img/avatar.png')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     @foreach($adminname as $name)
@@ -153,6 +153,12 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminpanel/panel" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Admin Data</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="/adminpanel/seo" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
