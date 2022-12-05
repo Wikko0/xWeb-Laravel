@@ -95,7 +95,7 @@ class AdminController extends Controller
     {
 
         XWEB_ANNOUNCE::updateOrCreate(
-            ['id' => 1],
+            ['row' => 1],
             ['status' => $request->status, 'date' => $request->date, 'title' => $request->title]);
         return redirect('adminpanel/announce');
     }

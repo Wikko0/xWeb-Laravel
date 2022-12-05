@@ -15,6 +15,7 @@ class CreateXWEBANNOUNCESTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_ANNOUNCE', function (Blueprint $table) {
             $table->id();
+            $table->integer('row');
             $table->integer('status')->nullable();
             $table->string('title')->nullable();
             $table->date('date')->nullable();
