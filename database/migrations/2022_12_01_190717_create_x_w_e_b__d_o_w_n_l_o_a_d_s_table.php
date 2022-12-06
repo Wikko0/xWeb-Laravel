@@ -20,7 +20,6 @@ class CreateXWEBDOWNLOADSTable extends Migration
             $table->text('link')->nullable();
             $table->string('site')->nullable();
             $table->string('name')->nullable();
-            $table->timestamps();
         });
     }
 

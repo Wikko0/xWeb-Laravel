@@ -11,4 +11,5 @@ class XWEB_DOWNLOAD extends Model
 
     protected $table = 'XWEB_DOWNLOAD';
     protected $connection = 'XWEB';
+    public $timestamps = false;
 }

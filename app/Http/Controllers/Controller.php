@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\XWEB_ADMINCP;
+use App\Models\XWEB_ADMINLOGIN;
+use App\Models\XWEB_ANNOUNCE;
+use App\Models\XWEB_DOWNLOAD;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,10 +19,10 @@ class Controller extends BaseController
 
     public function __construct() {
         /* All Variable */
-        $admin = DB::connection('XWEB')->Table('XWEB_ADMINCP')->get();
-        $adminname = DB::connection('XWEB')->Table('XWEB_ADMINLOGIN')->get();
-        $announce = DB::connection('XWEB')->Table('XWEB_ANNOUNCE')->get();
-        $download = DB::connection('XWEB')->Table('XWEB_DOWNLOAD')->get();
+        $admin = XWEB_ADMINCP::get();
+        $adminname = XWEB_ADMINLOGIN::get();
+        $announce = XWEB_ANNOUNCE::get();
+        $download = XWEB_DOWNLOAD::get();
         $event = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
         $boss = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
         $slider = DB::connection('XWEB')->Table('XWEB_SLIDERS')->get();

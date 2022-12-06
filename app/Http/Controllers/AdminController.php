@@ -7,6 +7,7 @@ use App\Models\MEMB_INFO;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
+use App\Models\XWEB_DOWNLOAD;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -100,37 +101,6 @@ class AdminController extends Controller
         return redirect('adminpanel/announce');
     }
 
-    public function charclass()
-    {
-        $class = ['char' => DB::connection('XWEB')->Table('XWEB_CHARCLASS')->get()];
-
-        return view('ap.charclass', $class);
-    }
-
-    public function do_charclass(Request $request)
-    {
-
-        foreach ($request->Personid as $i => $id) {
-            $newid = $request->id;
-            $classname = $request->classname;
-            $shortname = $request->shortname;
-            $maxlevel = $request->maxlevel;
-            $ppl = $request->ppl;
-            $update = DB::connection('XWEB')->table('XWEB_CHARCLASS')
-                ->where('Personid', $id)
-                ->update(
-                    [
-                        'id' => $newid[$i],
-                        'classname' => $classname[$i],
-                        'shortname' => $shortname[$i],
-                        'maxlevel' => $maxlevel[$i],
-                        'ppl' => $ppl[$i]
-                    ]);
-
-        }
-
-        return redirect('adminpanel/charclass');
-    }
 
     public function download()
     {
@@ -145,8 +115,8 @@ class AdminController extends Controller
             'mb' => 'max:15'
         ]);
 
-        $insert = DB::connection('XWEB')->table('XWEB_DOWNLOAD')
-            ->insert(['mb' => $request->mb, 'name' => $request->name, 'version' => $request->version, 'link' => $request->link,
+         XWEB_DOWNLOAD::
+            insert(['mb' => $request->mb, 'name' => $request->name, 'version' => $request->version, 'link' => $request->link,
                 'site' => $request->site]);
 
 

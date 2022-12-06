@@ -14,9 +14,9 @@
             <div class="download-block block-p tab active" id="lite">
                 <p>Without sounds and musics:</p>
 
-                @foreach($lite as $values)
-                <span class="size">{{$values}}MB</span>
-                @endforeach
+
+                <span class="size">{{$full->mb}}</span>
+
                 <div class="flex-c-c">
                     @foreach($litelink as $values)
                         @if($values->site == 'google')
@@ -40,9 +40,9 @@
 
             @if(isset($full))
             <div class="download-block block-p tab" id="full">
-                @foreach($full as $values)
-                    <span class="size">{{$values}}MB</span>
-                @endforeach
+
+                    <span class="size">{{$full->mb}} MB</span>
+
                 <div class="flex-c-c">
                     @foreach($fulllink as $values)
                         @if($values->site == 'google')
