@@ -6,6 +6,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_SLIDERS;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -25,7 +26,7 @@ class Controller extends BaseController
         $download = XWEB_DOWNLOAD::get();
         $event = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
         $boss = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
-        $slider = DB::connection('XWEB')->Table('XWEB_SLIDERS')->get();
+        $slider = XWEB_SLIDERS::get();
         $hof = DB::connection('XWEB')->Table('XWEB_HOF')->get();
         View::share(['admin' => $admin,'adminname' => $adminname, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
 

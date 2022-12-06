@@ -7,9 +7,11 @@
 
     <div class="header-slider">
         <div class="slider slider-top single-item">
-            @foreach($slider as $value)
+            @forelse($slider as $value)
                 <div><img src="images/{{$value->name}}.jpg" alt=""></div>
-            @endforeach
+            @empty
+                <div><img src="images/slider-img.jpg" alt=""></div>
+            @endforelse
         </div>
     </div>
     </div><!-- container -->

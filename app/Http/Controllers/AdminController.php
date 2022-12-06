@@ -8,6 +8,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -128,8 +129,7 @@ class AdminController extends Controller
 
         foreach ($request->id as $key => $items) {
 
-            $delete = DB::connection('XWEB')->table('XWEB_DOWNLOAD')
-                ->where('id', $items)
+            XWEB_DOWNLOAD::where('id', $items)
                 ->delete();
         }
 
@@ -315,13 +315,12 @@ class AdminController extends Controller
             'image' => 'dimensions:min_width=884,min_height=374,max_width=884,max_height=374|mimes:jpg|required|max:10000'
         ], ['image.dimensions' => 'Image must be at least 884 x 374 pixels']);
 
-        $id = DB::connection('XWEB')->table('XWEB_SLIDERS')->latest('id')->first();
+        $id = XWEB_SLIDERS::latest('id')->first();
         $last = $id->id ?? 0;
         $next_id = ++$last;
         $name = 'slider-img' . $next_id;
 
-        $insert = DB::connection('XWEB')->table('XWEB_SLIDERS')
-            ->insert(['name' => $name]);
+         XWEB_SLIDERS::insert(['name' => $name]);
 
 
         $makeImage = $request->file('image');

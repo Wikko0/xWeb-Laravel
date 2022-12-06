@@ -31,6 +31,7 @@ return array(
     'App\\Models\\XWEB_ANNOUNCE' => $baseDir . '/app/Models/XWEB_ANNOUNCE.php',
     'App\\Models\\XWEB_DOWNLOAD' => $baseDir . '/app/Models/XWEB_DOWNLOAD.php',
     'App\\Models\\XWEB_NEWS' => $baseDir . '/app/Models/XWEB_NEWS.php',
+    'App\\Models\\XWEB_SLIDERS' => $baseDir . '/app/Models/XWEB_SLIDERS.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

@@ -15,7 +15,7 @@
                 <p>Without sounds and musics:</p>
 
 
-                <span class="size">{{$full->mb}}</span>
+                <span class="size">{{$full->mb}} MB</span>
 
                 <div class="flex-c-c">
                     @foreach($litelink as $values)
