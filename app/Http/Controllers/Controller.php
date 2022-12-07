@@ -6,6 +6,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_NEWS;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -31,9 +32,9 @@ class Controller extends BaseController
         View::share(['admin' => $admin,'adminname' => $adminname, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
 
         /* News System */
-        $new_news = DB::connection('XWEB')->Table('XWEB_NEWS')->where('specific', '=', 'news')->get();
-        $new_events = DB::connection('XWEB')->Table('XWEB_NEWS')->where('specific', '=', 'events')->get();
-        $new_updates = DB::connection('XWEB')->Table('XWEB_NEWS')->where('specific', '=', 'updates')->get();
+        $new_news = XWEB_NEWS::where('specific', '=', 'news')->get();
+        $new_events = XWEB_NEWS::where('specific', '=', 'events')->get();
+        $new_updates = XWEB_NEWS::where('specific', '=', 'updates')->get();
         View::share(['new_news' => $new_news, 'new_events' => $new_events, 'new_updates' => $new_updates]);
 
         /* User Panel */

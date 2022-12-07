@@ -41,7 +41,7 @@
             <div class="block-info-center">
                 <div class="tab-title flex-c">
                     <a data-tab="news" class="tab-links active">News</a>
-                    <a data-tab="events" class="tab-links">Events</a>
+                    <a data-tab="eventss" class="tab-links">Events</a>
                     <a data-tab="updates" class="tab-links">Updates</a>
                     <a href="" class="tab-links-more">+</a>
                 </div>
@@ -54,7 +54,7 @@
                                 <span class="news-date">{{$new->date}}</span></a>
                         @endforeach
                     </div>
-                    <div class="tab-block-news tab" id="events">
+                    <div class="tab-block-news tab" id="eventss">
                         <h2>SEASON XIII! THE NEW VERSION OF MU</h2>
                         @foreach($events as $event)
 

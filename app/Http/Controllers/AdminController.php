@@ -8,6 +8,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_NEWS;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -338,8 +339,8 @@ class AdminController extends Controller
             File::delete($ImagePath);
         }
         foreach ($request->id as $key => $items) {
-            $delete = DB::connection('XWEB')->table('XWEB_SLIDERS')
-                ->where('id', $items)
+            XWEB_SLIDERS::
+                where('id', $items)
                 ->delete();
         }
 
@@ -356,8 +357,8 @@ class AdminController extends Controller
     {
 
         $today = date('Y-m-d');
-        $insert = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->insert(['date' => $today,
+       XWEB_NEWS::
+            insert(['date' => $today,
                 'subject' => $request->title,
                 'news' => $request->news,
                 'prefix' => $request->prefix,
@@ -369,8 +370,8 @@ class AdminController extends Controller
     {
         foreach ($request->id as $key => $id) {
 
-            $delete = DB::connection('XWEB')->table('XWEB_NEWS')
-                ->where('id', $id)
+           XWEB_NEWS::
+                where('id', $id)
                 ->delete();
         }
 
