@@ -387,8 +387,8 @@ class AdminController extends Controller
     {
 
         $today = date('Y-m-d');
-        $insert = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->insert(['date' => $today,
+         XWEB_NEWS::
+            insert(['date' => $today,
                 'subject' => $request->title,
                 'news' => $request->news,
                 'prefix' => $request->prefix,
@@ -400,8 +400,8 @@ class AdminController extends Controller
     {
         foreach ($request->id as $key => $id) {
 
-            $delete = DB::connection('XWEB')->table('XWEB_NEWS')
-                ->where('id', $id)
+            XWEB_NEWS::
+                where('id', $id)
                 ->delete();
         }
 
@@ -417,8 +417,8 @@ class AdminController extends Controller
     {
 
         $today = date('Y-m-d');
-        $insert = DB::connection('XWEB')->table('XWEB_NEWS')
-            ->insert(['date' => $today,
+        XWEB_NEWS::
+            insert(['date' => $today,
                 'subject' => $request->title,
                 'news' => $request->news,
                 'prefix' => $request->prefix,
@@ -430,8 +430,8 @@ class AdminController extends Controller
     {
         foreach ($request->id as $key => $id) {
 
-            $delete = DB::connection('XWEB')->table('XWEB_NEWS')
-                ->where('id', $id)
+            XWEB_NEWS::
+                where('id', $id)
                 ->delete();
         }
 
