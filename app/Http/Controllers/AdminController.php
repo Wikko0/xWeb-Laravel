@@ -8,6 +8,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
@@ -440,14 +441,14 @@ class AdminController extends Controller
 
     public function hof()
     {
-        $class = ['char' => DB::connection('XWEB')->Table('XWEB_HOF')->get()];
+        $class = ['char' => XWEB_HOF::get()];
         return view('ap.hof', $class);
     }
 
     public function hof_add(Request $request)
     {
-        $update = DB::connection('XWEB')->table('XWEB_HOF')
-            ->where('class', '=', $request->class)
+       XWEB_HOF::
+            where('class', '=', $request->class)
             ->update(['name' => $request->name,
                 'wins' => $request->wins
             ]);
@@ -456,7 +457,7 @@ class AdminController extends Controller
 
     public function hofswitch()
     {
-        $class = ['char' => DB::connection('XWEB')->Table('XWEB_HOF')->get()];
+        $class = ['char' => XWEB_HOF::get()];
         return view('ap.hofswitch', $class);
     }
 
@@ -471,8 +472,8 @@ class AdminController extends Controller
                 $switch = "No";
             }
 
-            $update = DB::connection('XWEB')->table('XWEB_HOF')
-                ->where('name', $request->name[$i])
+            XWEB_HOF::
+                where('name', $request->name[$i])
                 ->update(
                     [
                         'status' => $switch,

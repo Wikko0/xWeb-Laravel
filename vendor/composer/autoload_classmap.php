@@ -30,6 +30,7 @@ return array(
     'App\\Models\\XWEB_ADMINLOGIN' => $baseDir . '/app/Models/XWEB_ADMINLOGIN.php',
     'App\\Models\\XWEB_ANNOUNCE' => $baseDir . '/app/Models/XWEB_ANNOUNCE.php',
     'App\\Models\\XWEB_DOWNLOAD' => $baseDir . '/app/Models/XWEB_DOWNLOAD.php',
+    'App\\Models\\XWEB_HOF' => $baseDir . '/app/Models/XWEB_HOF.php',
     'App\\Models\\XWEB_NEWS' => $baseDir . '/app/Models/XWEB_NEWS.php',
     'App\\Models\\XWEB_SLIDERS' => $baseDir . '/app/Models/XWEB_SLIDERS.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
