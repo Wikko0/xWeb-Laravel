@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\MEMB_INFO;
+use App\Models\XWEB_ADDSTATS;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
@@ -513,13 +514,13 @@ class AdminController extends Controller
 
     public function addstats()
     {
-        $db = ['addstats' => DB::connection('XWEB')->Table('XWEB_ADDSTATS')->get()];
+        $db = ['addstats' => XWEB_ADDSTATS::get()];
         return view('ap.addstats', $db);
     }
 
     public function do_addstats(Request $request)
     {
-        $update = DB::connection('XWEB')->table('XWEB_ADDSTATS')
+        XWEB_ADDSTATS::where('id', $request->id)
             ->update(['maxpoints' => $request->maxpoints
 
             ]);

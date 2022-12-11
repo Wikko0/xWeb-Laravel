@@ -54,9 +54,10 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="/adminpanel/addstats">
-                                {{csrf_field()}}
+                                @csrf
                                 @foreach($addstats as $values)
                                 <div class="card-body">
+                                    <input type="hidden" name="id" value="{{$values->id}}">
                                     <div class="form-group">
                                         <label for="MaxPoints">Max Points</label>
                                         <input type="number" class="form-control" id="maxpoints" name="maxpoints" value="{{$values->maxpoints}}">
