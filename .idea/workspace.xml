@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b1526486-f488-4272-bccf-fa988bf4a6af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/xController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/xController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ap/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ap/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,12 +161,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/ap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\xWeb\public\js" />
       <recent name="C:\xampp\htdocs\xWeb\resources\views\ap" />
     </key>
   </component>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\Guild;
 use App\Models\MEMB_INFO;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_NEWS;
@@ -16,7 +17,7 @@ class xController extends Controller
     {
         $selectchars = Character::orderBy('Resets', 'desc')
             ->paginate(5);
-        $selectguilds = Character::orderBy('Resets', 'desc')
+        $selectguilds = Guild::orderBy('Resets', 'desc')
             ->paginate(5);
 
         // Top5 Characters

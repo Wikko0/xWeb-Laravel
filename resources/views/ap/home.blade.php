@@ -220,3 +220,8 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+@section('scripts')
+    <!-- JQVMap -->
+    <script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+@endsection
