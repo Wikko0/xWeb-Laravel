@@ -6,7 +6,10 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_GRANDRESET;
+use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_RESET;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -28,7 +31,7 @@ class Controller extends BaseController
         $event = json_decode(file_get_contents(storage_path() . "/app/public/event_config.json"), true);
         $boss = json_decode(file_get_contents(storage_path() . "/app/public/boss_config.json"), true);
         $slider = XWEB_SLIDERS::get();
-        $hof = DB::connection('XWEB')->Table('XWEB_HOF')->get();
+        $hof = XWEB_HOF::get();
         View::share(['admin' => $admin,'adminname' => $adminname, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
 
         /* News System */
@@ -38,8 +41,8 @@ class Controller extends BaseController
         View::share(['new_news' => $new_news, 'new_events' => $new_events, 'new_updates' => $new_updates]);
 
         /* User Panel */
-        $reset = DB::connection('XWEB')->Table('XWEB_RESET')->get();
-        $greset = DB::connection('XWEB')->Table('XWEB_GRANDRESET')->get();
+        $reset = XWEB_RESET::get();
+        $greset = XWEB_GRANDRESET::get();
         View::share(['reset' => $reset, 'greset' => $greset]);
 
 
