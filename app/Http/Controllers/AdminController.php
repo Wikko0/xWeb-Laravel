@@ -10,6 +10,7 @@ use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_RESET;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -486,13 +487,14 @@ class AdminController extends Controller
 
     public function reset()
     {
-        $db = ['reset' => DB::connection('XWEB')->Table('XWEB_RESET')->get()];
+        $db = ['reset' => XWEB_RESET::get()];
         return view('ap.reset', $db);
     }
 
     public function do_reset(Request $request)
     {
-        $update = DB::connection('XWEB')->table('XWEB_RESET')
+        XWEB_RESET::
+            where('id', $request->id)
             ->update(['maxresets' => $request->maxresets,
                 'level' => $request->level,
                 'zen' => $request->zen,

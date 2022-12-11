@@ -54,9 +54,10 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="/adminpanel/reset">
-                                {{csrf_field()}}
+                                @csrf
                                 @foreach($reset as $values)
                                 <div class="card-body">
+                                    <input type="hidden" name="id" value="{{$values->id}}">
                                     <div class="form-group">
                                         <label for="MaxResets">Max Resets</label>
                                         <input type="number" class="form-control" id="maxresets" name="maxresets" value="{{$values->maxresets}}">
