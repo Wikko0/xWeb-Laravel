@@ -236,7 +236,7 @@
                             <li class="nav-item">
                                 <a href="/adminpanel/addstats" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>AddStats Settings</p>
+                                    <p>Add Stats Settings</p>
                                 </a>
                             </li>
                         </ul>

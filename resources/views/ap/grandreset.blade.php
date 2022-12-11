@@ -54,9 +54,10 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="/adminpanel/grand-reset">
-                                {{csrf_field()}}
+                                @csrf
                                 @foreach($greset as $values)
                                 <div class="card-body">
+                                    <input type="hidden" name="id" value="{{$values->id}}">
                                     <div class="form-group">
                                         <label for="Resets">Required Resets</label>
                                         <input type="number" class="form-control" id="resets" name="resets" value="{{$values->resets}}">

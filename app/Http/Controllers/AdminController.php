@@ -9,6 +9,7 @@ use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
+use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_RESET;
@@ -529,13 +530,13 @@ class AdminController extends Controller
 
     public function grandreset()
     {
-        $db = ['greset' => DB::connection('XWEB')->Table('XWEB_GRANDRESET')->get()];
+        $db = ['greset' => XWEB_GRANDRESET::get()];
         return view('ap.grandreset', $db);
     }
 
     public function do_grandreset(Request $request)
     {
-        $update = DB::connection('XWEB')->table('XWEB_GRANDRESET')
+        XWEB_GRANDRESET::where('id', $request->id)
             ->update(['maxgresets' => $request->maxgresets,
                 'resets' => $request->resets,
                 'level' => $request->level,
