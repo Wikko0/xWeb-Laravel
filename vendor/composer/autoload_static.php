@@ -541,6 +541,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Models\\XWEB_ADMINCP' => __DIR__ . '/../..' . '/app/Models/XWEB_ADMINCP.php',
         'App\\Models\\XWEB_ADMINLOGIN' => __DIR__ . '/../..' . '/app/Models/XWEB_ADMINLOGIN.php',
         'App\\Models\\XWEB_ANNOUNCE' => __DIR__ . '/../..' . '/app/Models/XWEB_ANNOUNCE.php',
+        'App\\Models\\XWEB_CHAR_INFO' => __DIR__ . '/../..' . '/app/Models/XWEB_CHAR_INFO.php',
         'App\\Models\\XWEB_CREDITS' => __DIR__ . '/../..' . '/app/Models/XWEB_CREDITS.php',
         'App\\Models\\XWEB_DOWNLOAD' => __DIR__ . '/../..' . '/app/Models/XWEB_DOWNLOAD.php',
         'App\\Models\\XWEB_GRANDRESET' => __DIR__ . '/../..' . '/app/Models/XWEB_GRANDRESET.php',

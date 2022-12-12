@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\XWEB_ADDSTATS;
+use App\Models\XWEB_CHAR_INFO;
 use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_RESET;
@@ -206,8 +207,7 @@ class UserController extends Controller
             }
             // Update
             else {
-                DB::table('Character')
-                    ->where('Name', '=', $request->char)
+                Character::where('Name', '=', $request->char)
                     ->update($dataToUpdate);
             }
 
@@ -234,7 +234,7 @@ class UserController extends Controller
             $select = Character::where('Name', '=', $request->char)->first();
             $credits = XWEB_CREDITS::where('name', '=', $select->AccountID)->first();
             $greset = XWEB_GRANDRESET::first();
-            $charinfo = DB::connection('XWEB')->Table('XWEB_CHAR_INFO')->first();
+            $charinfo = XWEB_CHAR_INFO::first();
 
             $newzen = $select->Money - $greset->zen;
             $newcredits = $greset->credits + $credits->credits;
@@ -255,8 +255,8 @@ class UserController extends Controller
             }
             // Update
             else {
-                DB::table('Character')
-                    ->where('Name', '=', $request->char)
+                Character::
+                where('Name', '=', $request->char)
                     ->update([
                         'Resets' => 0,
                         'Strength' => 25,
@@ -268,21 +268,21 @@ class UserController extends Controller
                         'Money' => $newzen,
                         'cLevel' => 1
                     ]);
-                DB::connection('XWEB')->table('XWEB_CREDITS')
-                    ->update(['credits' => $newcredits,
+                XWEB_CREDITS::
+                    update(['credits' => $newcredits,
                     ]);
                 if (empty($charinfo->name))
                 {
-                    DB::connection('XWEB')->table('XWEB_CHAR_INFO')
-                        ->insert([
+                    XWEB_CHAR_INFO::
+                        insert([
                             'name' => $request->char,
                             'gresets' => 1
                         ]);
                 }
                 else
                 {
-                    DB::connection('XWEB')->table('XWEB_CHAR_INFO')
-                        ->where('name', '=', $request->char)
+                    XWEB_CHAR_INFO::
+                    where('name', '=', $request->char)
                         ->update(['gresets' => DB::raw('gresets+1'),
                         ]);
                 }

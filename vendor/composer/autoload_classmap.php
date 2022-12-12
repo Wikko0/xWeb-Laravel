@@ -31,6 +31,7 @@ return array(
     'App\\Models\\XWEB_ADMINCP' => $baseDir . '/app/Models/XWEB_ADMINCP.php',
     'App\\Models\\XWEB_ADMINLOGIN' => $baseDir . '/app/Models/XWEB_ADMINLOGIN.php',
     'App\\Models\\XWEB_ANNOUNCE' => $baseDir . '/app/Models/XWEB_ANNOUNCE.php',
+    'App\\Models\\XWEB_CHAR_INFO' => $baseDir . '/app/Models/XWEB_CHAR_INFO.php',
     'App\\Models\\XWEB_CREDITS' => $baseDir . '/app/Models/XWEB_CREDITS.php',
     'App\\Models\\XWEB_DOWNLOAD' => $baseDir . '/app/Models/XWEB_DOWNLOAD.php',
     'App\\Models\\XWEB_GRANDRESET' => $baseDir . '/app/Models/XWEB_GRANDRESET.php',
