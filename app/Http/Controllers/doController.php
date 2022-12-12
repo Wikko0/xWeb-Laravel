@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\MEMB_INFO;
+use App\Models\XWEB_CREDITS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,10 @@ class doController extends Controller
             'bloc_code' => 0,
             'ctl1_code' => 0,
             'reg_date' => time(),
+        ]);
+        XWEB_CREDITS::insert([
+           'name' => $request->login,
+           'credits' => 0
         ]);
         return redirect()->back()->withSuccess('Thanks ' .$request->login. ' your registration was successful');
     }

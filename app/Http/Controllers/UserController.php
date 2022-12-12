@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character;
+use App\Models\XWEB_ADDSTATS;
+use App\Models\XWEB_CREDITS;
+use App\Models\XWEB_GRANDRESET;
+use App\Models\XWEB_RESET;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -11,7 +16,7 @@ class UserController extends Controller
 
     private function online($char)
     {
-        $id = DB::table('Character')->where('Name', '=', $char)->first();
+        $id = Character::where('Name', '=', $char)->first();
         $check =  DB::table('MEMB_STAT')->where('memb___id', '=', $id->AccountID)->first();
         $check2 = DB::table('AccountCharacter')->where('id', '=', $id->AccountID)->first();
 
@@ -36,7 +41,7 @@ class UserController extends Controller
     public function reset()
     {
 
-        $data = ['char'=> DB::Table('Character')->where('AccountID', '=', session('User'))->get()];
+        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
         return view('user.reset', $data);
 
     }
@@ -49,8 +54,8 @@ class UserController extends Controller
         }
         else {
             $online = $this->online($request->char);
-            $select = DB::table('Character')->where('Name', '=', $request->char)->first();
-            $reset = DB::connection('XWEB')->Table('XWEB_RESET')->first();
+            $select = Character::where('Name', '=', $request->char)->first();
+            $reset = XWEB_RESET::first();
             switch ($select->Class) {
                 case 0:
                 case 1:
@@ -120,8 +125,8 @@ class UserController extends Controller
             }
             // Update
             else {
-                DB::table('Character')
-                    ->where('Name', '=', $request->char)
+                Character::
+                    where('Name', '=', $request->char)
                     ->update([
                         'Resets' => DB::raw('Resets+1'),
                         'Strength' => 25,
@@ -142,7 +147,7 @@ class UserController extends Controller
     public function addstats()
     {
 
-        $data = ['char'=> DB::Table('Character')->where('AccountID', '=', session('User'))->get()];
+        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
         return view('user.add-stats', $data);
 
     }
@@ -156,8 +161,8 @@ class UserController extends Controller
             return redirect()->back()->withErrors('Choose character first!');
         }
         else {
-            $select = DB::table('Character')->where('Name', '=', $request->char)->first();
-            $addstats = DB::connection('XWEB')->Table('XWEB_ADDSTATS')->first();
+            $select = Character::where('Name', '=', $request->char)->first();
+            $addstats = XWEB_ADDSTATS::first();
             $newpoints = $select->LevelUpPoint - ($request->str + $request->agi + $request->vit + $request->ene);
             $maxpoints = $addstats->maxpoints;
 
@@ -213,7 +218,7 @@ class UserController extends Controller
     public function grandreset()
     {
 
-        $data = ['char'=> DB::Table('Character')->where('AccountID', '=', session('User'))->get()];
+        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
         return view('user.grandreset', $data);
 
     }
@@ -226,9 +231,9 @@ class UserController extends Controller
         }
         else {
             $online = $this->online($request->char);
-            $select = DB::table('Character')->where('Name', '=', $request->char)->first();
-            $credits = DB::connection('XWEB')->Table('XWEB_CREDITS')->where('Name', '=', $select->AccountID)->first();
-            $greset = DB::connection('XWEB')->Table('XWEB_GRANDRESET')->first();
+            $select = Character::where('Name', '=', $request->char)->first();
+            $credits = XWEB_CREDITS::where('name', '=', $select->AccountID)->first();
+            $greset = XWEB_GRANDRESET::first();
             $charinfo = DB::connection('XWEB')->Table('XWEB_CHAR_INFO')->first();
 
             $newzen = $select->Money - $greset->zen;
