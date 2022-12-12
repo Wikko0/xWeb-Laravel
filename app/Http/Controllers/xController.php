@@ -8,8 +8,6 @@ use App\Models\MEMB_INFO;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_NEWS;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class xController extends Controller
 {
@@ -41,25 +39,25 @@ class xController extends Controller
             $sumicon = url('/images/sum-icon.png');
             $rficon = url('/images/rf-icon.png');
 
-            if(in_array($row -> Class, $classsm)){
+            if(in_array($row->Class, $classsm)){
                 $class = "<img src='{$smicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classbk)){
+            if(in_array($row->Class, $classbk)){
                 $class = "<img src='{$bkicon}' alt=''>";
             }
-            if(in_array($row -> Class, $clasself)){
+            if(in_array($row->Class, $clasself)){
                 $class = "<img src='{$elficon}' alt=''>";
             }
-            if(in_array($row -> Class, $classmg)){
+            if(in_array($row->Class, $classmg)){
                 $class = "<img src='{$mgicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classdl)){
+            if(in_array($row->Class, $classdl)){
                 $class = "<img src='{$dlicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classsum)){
+            if(in_array($row->Class, $classsum)){
                 $class = "<img src='{$sumicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classrf)){
+            if(in_array($row->Class, $classrf)){
                 $class = "<img src='{$rficon}' alt=''>";
             }
 
@@ -174,25 +172,25 @@ class xController extends Controller
             $sumicon = url('/images/sum-icon.png');
             $rficon = url('/images/rf-icon.png');
 
-            if(in_array($row -> Class, $classsm)){
+            if(in_array($row->Class, $classsm)){
                 $class = "<img src='{$smicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classbk)){
+            if(in_array($row->Class, $classbk)){
                 $class = "<img src='{$bkicon}' alt=''>";
             }
-            if(in_array($row -> Class, $clasself)){
+            if(in_array($row->Class, $clasself)){
                 $class = "<img src='{$elficon}' alt=''>";
             }
-            if(in_array($row -> Class, $classmg)){
+            if(in_array($row->Class, $classmg)){
                 $class = "<img src='{$mgicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classdl)){
+            if(in_array($row->Class, $classdl)){
                 $class = "<img src='{$dlicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classsum)){
+            if(in_array($row->Class, $classsum)){
                 $class = "<img src='{$sumicon}' alt=''>";
             }
-            if(in_array($row -> Class, $classrf)){
+            if(in_array($row->Class, $classrf)){
                 $class = "<img src='{$rficon}' alt=''>";
             }
 

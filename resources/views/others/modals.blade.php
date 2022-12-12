@@ -1,13 +1,5 @@
 
     <!-- MODALS -->
-    <div id="modal1" class="modal_div video-modal">
-        <span class="modal_close"></span>
-        <iframe width="800" height="600" src="https://www.youtube.com/embed/9sxoIJg65pE" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div><!-- modal_div -->
-    <div id="modal2" class="modal_div video-modal">
-        <span class="modal_close"></span>
-        <iframe width="800" height="600" src="https://www.youtube.com/embed/9sxoIJg65pE" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div><!-- modal_div -->
     <div id="modal3" class="modal_div modal-links modal-ev">
         <span class="modal_close"></span>
         <div class="modal-block">
@@ -57,7 +49,7 @@
         @endif
         <h1>Login</h1>
         <form method="post" action="/login">
-            {{csrf_field()}}
+            @csrf
             <p><input type="text" name="login" placeholder="Login"></p>
             <p><input type="password" name="password" placeholder="Password"></p>
             <p><button class="download-link">Login</button></p>
