@@ -37,6 +37,7 @@ return array(
     'App\\Models\\XWEB_GRANDRESET' => $baseDir . '/app/Models/XWEB_GRANDRESET.php',
     'App\\Models\\XWEB_HOF' => $baseDir . '/app/Models/XWEB_HOF.php',
     'App\\Models\\XWEB_NEWS' => $baseDir . '/app/Models/XWEB_NEWS.php',
+    'App\\Models\\XWEB_PKCLEAR' => $baseDir . '/app/Models/XWEB_PKCLEAR.php',
     'App\\Models\\XWEB_RESET' => $baseDir . '/app/Models/XWEB_RESET.php',
     'App\\Models\\XWEB_SLIDERS' => $baseDir . '/app/Models/XWEB_SLIDERS.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

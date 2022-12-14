@@ -7,6 +7,7 @@ use App\Models\XWEB_ADDSTATS;
 use App\Models\XWEB_CHAR_INFO;
 use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_GRANDRESET;
+use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RESET;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,20 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserController extends Controller
 {
+
+   public function pklevel($value, $view=0)
+    {
+        $pklevel = array(
+            0 => array('Hero'),
+            1 => array('Commoner'),
+            2 => array('Normal'),
+            3 => array('Against Murderer'),
+            4 => array('Murderer'),
+            5 => array('Phonomania')
+        );
+        return isset($pklevel[$value][$view]) ? $pklevel[$value][$view] : 'Unknown';
+    }
+
 
     private function online($char)
     {
@@ -286,6 +301,55 @@ class UserController extends Controller
                         ->update(['gresets' => DB::raw('gresets+1'),
                         ]);
                 }
+
+            }
+
+            return redirect()->back()->with('success', 'You have reset this character successfully!');
+        }
+    }
+
+    public function clearpk()
+    {
+
+        $char = Character::where('AccountID', '=', session('User'))->get();
+        return view('user.clearpk', ['char'=>$char, 'pk' => $this]);
+
+    }
+
+    public function do_clearpk(Request $request)
+    {
+        if (empty($request->char))
+        {
+            return redirect()->back()->withErrors('Choose character first!');
+        }
+        else {
+            $online = $this->online($request->char);
+            $select = Character::where('Name', '=', $request->char)->first();
+            $zen = XWEB_PKCLEAR::first();
+
+            $cost = $select->PkCount * $zen->zen;
+            $newzen = $select->Money - $cost;
+
+
+            // Verification
+            if ($newzen < 0) {
+                return redirect()->back()->withErrors('You don\'t have enough zen!');
+            }
+            elseif ($select->PkCount == 0) {
+                return redirect()->back()->withErrors('You don\'t have kills yet!');
+            }
+            elseif ($online === 1) {
+                return redirect()->back()->withErrors('Leave game first!');
+            }
+            // Update
+            else {
+                Character::
+                where('Name', '=', $request->char)
+                    ->update([
+                        'Money' => $newzen,
+                        'PkLevel' => 0,
+                        'PkCount' => 0
+                    ]);
 
             }
 

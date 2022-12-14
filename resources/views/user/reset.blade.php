@@ -29,7 +29,7 @@
             </div>
         @endif
         <form method="post" action="/reset">
-            {{csrf_field()}}
+            @csrf
             <select name="char">
                 <option value="">Select Character</option>
             @foreach($char as $chars)

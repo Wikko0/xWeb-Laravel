@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Character extends Model
+class XWEB_PKCLEAR extends Model
 {
     use HasFactory;
 
-    protected $table = 'Character';
+    protected $table = 'XWEB_PKCLEAR';
+    protected $connection = 'XWEB';
     public $timestamps = false;
-
 }

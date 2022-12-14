@@ -12,6 +12,7 @@ use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
@@ -545,6 +546,20 @@ class AdminController extends Controller
 
             ]);
         return redirect()->back()->withSuccess('You have changed reset settings successfully!');
+    }
+
+    public function pkclear()
+    {
+        $db = ['pkclear' => XWEB_PKCLEAR::get()];
+        return view('ap.pkclear', $db);
+    }
+
+    public function do_pkclear(Request $request)
+    {
+        XWEB_PKCLEAR::where('id', $request->id)
+            ->update(['zen' => $request->zen
+            ]);
+        return redirect()->back()->withSuccess('You have changed PK Clear cost settings successfully!');
     }
 
 }

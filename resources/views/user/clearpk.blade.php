@@ -5,6 +5,11 @@
     @include('block.rightblock')
 
     <main class="content">
+
+
+
+
+            <h1>Clear PK</h1>
         @if(session('success'))
             <div class="notification success">
 
@@ -23,25 +28,26 @@
                 </div>
             </div>
         @endif
-            <h1>Add Stats</h1>
-
-        <form method="post" action="/add-stats">
+        <form method="post" action="/clearpk">
             @csrf
             <select name="char">
                 <option value="">Select Character</option>
             @foreach($char as $chars)
-                <option value={{$chars->Name}}>{{$chars->Name}}: {{$chars->cLevel}} Level, {{$chars->LevelUpPoint}} Points</option>
+
+                <option value={{$chars->Name}}>{{$chars->Name}}: {{$pk->pklevel($chars->PkLevel)}}</option>
 
             @endforeach
             </select>
-            <p><input type="number" name="str" placeholder="Strength"></p>
-            <p><input type="number" name="agi" placeholder="Dexterity"></p>
-            <p><input type="number" name="vit" placeholder="Vitality"></p>
-            <p><input type="number" name="ene" placeholder="Energy"></p>
-            <p><input type="number" name="com" placeholder="Command"></p>
-            <p><button class="big">Add Stats</button></p>
+            <p><button class="big">Clear PK</button></p>
         </form>
+            @foreach($pkclear as $values)
+            <div class="notification information">
+                <div>Information for PK Clear
 
+                    <li><b>Zen per kill</b> - {{$values->zen}}</li>
+                </div>
+            </div>
+            @endforeach
     </main><!-- content -->
     </div><!-- container -->
     </div><!-- block-links -->

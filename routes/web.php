@@ -40,6 +40,8 @@ Route::get('/add-stats', [UserController::class, 'addstats'])->middleware('user'
 Route::post('/add-stats', [UserController::class, 'do_addstats']);
 Route::get('/grand-reset', [UserController::class, 'grandreset'])->middleware('user');
 Route::post('/grand-reset', [UserController::class, 'do_grandreset']);
+Route::get('/clearpk', [UserController::class, 'clearpk'])->middleware('user');
+Route::post('/clearpk', [UserController::class, 'do_clearpk']);
 
 
 // Admin Panel
@@ -61,7 +63,9 @@ Route::get('/adminpanel/hofswitch', [AdminController::class, 'hofswitch'])->midd
 Route::get('/adminpanel/reset', [AdminController::class, 'reset'])->middleware('admin');
 Route::get('/adminpanel/addstats', [AdminController::class, 'addstats'])->middleware('admin');
 Route::get('/adminpanel/grand-reset', [AdminController::class, 'grandreset'])->middleware('admin');
+Route::get('/adminpanel/pkclear', [AdminController::class, 'pkclear'])->middleware('admin');
 
+Route::post('/adminpanel/pkclear', [AdminController::class, 'do_pkclear']);
 Route::post('/adminpanel/grand-reset', [AdminController::class, 'do_grandreset']);
 Route::post('/adminpanel/addstats', [AdminController::class, 'do_addstats']);
 Route::post('/adminpanel/reset', [AdminController::class, 'do_reset']);

@@ -9,6 +9,7 @@ use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -43,7 +44,8 @@ class Controller extends BaseController
         /* User Panel */
         $reset = XWEB_RESET::get();
         $greset = XWEB_GRANDRESET::get();
-        View::share(['reset' => $reset, 'greset' => $greset]);
+        $pkclear = XWEB_PKCLEAR::get();
+        View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear]);
 
 
         /* Event Timer */

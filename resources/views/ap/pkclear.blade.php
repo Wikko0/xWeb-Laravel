@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Grand Reset Settings</li>
+                            <li class="breadcrumb-item active">PK Clear Settings</li>
                         </ol>
                     </div>
                 </div>
@@ -49,38 +49,18 @@
                         <!-- seo form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Grand Reset Settings</h3>
+                                <h3 class="card-title">PK Clear Settings</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="post" action="/adminpanel/grand-reset">
+                            <form method="post" action="/adminpanel/pkclear">
                                 @csrf
-                                @foreach($greset as $values)
+                                @foreach($pkclear as $values)
                                 <div class="card-body">
                                     <input type="hidden" name="id" value="{{$values->id}}">
                                     <div class="form-group">
-                                        <label for="Resets">Required Resets</label>
-                                        <input type="number" class="form-control" id="resets" name="resets" value="{{$values->resets}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="ResetLevel">Required Level</label>
-                                        <input type="number" class="form-control" id="level" name="level" value="{{$values->level}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="ResetZen">Zen for GReset</label>
-                                        <input type="number" class="form-control" id="zen" name="zen" value="{{$values->zen}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="ResetMax">Max Grand Resets</label>
-                                        <input type="number" class="form-control" id="maxgresets" name="maxgresets" value="{{$values->maxgresets}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="CreditsReward">Credits Reward</label>
-                                        <input type="number" class="form-control" id="credits" name="credits" value="{{$values->credits}}">
+                                        <label for="Zen">Zen per kill</label>
+                                        <input type="number" class="form-control" id="zn" name="zen" value="{{$values->zen}}">
                                     </div>
 
 
@@ -97,8 +77,8 @@
                         <!-- /.card -->
 
                     </div>
-
                 </div>
+
             </div>
         </section>
         <!-- /.content -->

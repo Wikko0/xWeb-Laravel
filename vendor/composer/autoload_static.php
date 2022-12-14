@@ -547,6 +547,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Models\\XWEB_GRANDRESET' => __DIR__ . '/../..' . '/app/Models/XWEB_GRANDRESET.php',
         'App\\Models\\XWEB_HOF' => __DIR__ . '/../..' . '/app/Models/XWEB_HOF.php',
         'App\\Models\\XWEB_NEWS' => __DIR__ . '/../..' . '/app/Models/XWEB_NEWS.php',
+        'App\\Models\\XWEB_PKCLEAR' => __DIR__ . '/../..' . '/app/Models/XWEB_PKCLEAR.php',
         'App\\Models\\XWEB_RESET' => __DIR__ . '/../..' . '/app/Models/XWEB_RESET.php',
         'App\\Models\\XWEB_SLIDERS' => __DIR__ . '/../..' . '/app/Models/XWEB_SLIDERS.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
