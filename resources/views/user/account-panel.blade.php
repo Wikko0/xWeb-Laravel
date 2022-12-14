@@ -72,7 +72,7 @@
                             <td><img src="images/icons/ip.png">
                             </td>
                             <td>Current Ip</td>
-                            <td>{{Request::ip();}}</td>
+                            <td>{{Request::ip()}}</td>
                         </tr>
                         <tr>
                             <td><img src="images/icons/lightning.png">
@@ -128,6 +128,18 @@
                                 </ul>
                             </div>
                         </td>
+                        <td>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="/clearpk">
+                                            <p>PK Clear</p>
+                                        </a>
+                                        Clearing the hero's kills                                                 <br>&nbsp;
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
 
                     </tbody>
@@ -151,7 +163,7 @@
 
             <h1>Login</h1>
             <form method="post" action="/login">
-                {{csrf_field()}}
+                @csrf
                 <p><input type="text" name="login" placeholder="Login"></p>
                 <p><input type="password" name="password" placeholder="Password"></p>
                 <p><button class="big">Login</button></p>
