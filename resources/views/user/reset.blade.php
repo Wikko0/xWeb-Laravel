@@ -33,7 +33,7 @@
             <select name="char">
                 <option value="">Select Character</option>
             @foreach($char as $chars)
-                <option value={{$chars->Name}}>{{$chars->Name}}: {{$chars->cLevel}} Level</option>
+                <option value={{$chars->Name}}>{{$chars->Name}}: {{$chars->cLevel}} Level, {{$chars->Resets}} Resets</option>
 
             @endforeach
             </select>

@@ -91,54 +91,52 @@
                     <tbody>
                     <tr>
                         <td>
+                            <a href="/reset">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a href="reset">
                                             <p>Reset</p>
-                                        </a>
-                                        Reset your character level                                                <br>&nbsp;
-                                    </li>
+
+                                    <span>Reset your character level</span>                                                <br>&nbsp;
                                 </ul>
                             </div>
+                            </a>
                         </td>
                         <td>
+                            <a href="/grand-reset">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a href="grand-reset">
                                             <p>Grand Reset</p>
-                                        </a>
-                                        Grand Reset your character                                                <br>&nbsp;
-                                    </li>
+
+                                    <span>Grand Reset your character</span>                                                <br>&nbsp;
                                 </ul>
                             </div>
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <a href="/add-stats">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a href="add-stats">
+
                                             <p>Add Stats</p>
-                                        </a>
-                                        Add level up points. Str. Agi. Vit. etc                                                <br>&nbsp;
-                                    </li>
+
+                                    <span>Add level up points. Str. Agi. Vit. etc</span>                                                <br>&nbsp;
                                 </ul>
                             </div>
+                            </a>
                         </td>
                         <td>
+                            <a href="/clearpk">
                             <div>
                                 <ul>
-                                    <li>
-                                        <a href="/clearpk">
                                             <p>PK Clear</p>
-                                        </a>
-                                        Clearing the hero's kills                                                 <br>&nbsp;
-                                    </li>
+
+                                        <span>Clearing the hero's kills </span>                                                <br>&nbsp;
+
                                 </ul>
                             </div>
+                            </a>
                         </td>
                     </tr>
 
