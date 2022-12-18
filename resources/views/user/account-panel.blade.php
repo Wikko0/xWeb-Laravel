@@ -139,12 +139,37 @@
                             </a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <a href="/rename">
+                                <div>
+                                    <ul>
 
+                                        <p>Rename Character</p>
+
+                                        <span>Change character name</span>                                                <br>&nbsp;
+                                    </ul>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/resetstats">
+                                <div>
+                                    <ul>
+                                        <p>Reset Character Stats</p>
+
+                                        <span>Fix added stats </span>                                                <br>&nbsp;
+
+                                    </ul>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
 
-            <a href="logout"><button  class="big">Logout</button></a>
+            <a href="/logout"><button  class="big">Logout</button></a>
         </div><!-- block-info-center -->
     </main><!-- content -->
     @else

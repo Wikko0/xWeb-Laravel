@@ -8,6 +8,7 @@ use App\Models\XWEB_CHAR_INFO;
 use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_PKCLEAR;
+use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -354,6 +355,56 @@ class UserController extends Controller
             }
 
             return redirect()->back()->with('success', 'You have reset this character successfully!');
+        }
+    }
+
+    public function rename()
+    {
+
+        $char = Character::where('AccountID', '=', session('User'))->get();
+        return view('user.rename', ['char'=>$char]);
+
+    }
+
+    public function do_rename(Request $request)
+    {
+        if (empty($request->char))
+        {
+            return redirect()->back()->withErrors('Choose character first!');
+        }
+        else {
+            $this->validate($request, [
+                'name' => 'unique:Character,Name|min:3|max:8'
+            ]);
+            $online = $this->online($request->char);
+            $select = Character::where('Name', '=', $request->char)->first();
+            $fee = XWEB_RENAME::first();
+            $credits = XWEB_CREDITS::where('name', '=', $select->AccountID)->first();
+            $cost = $credits->credits - $fee->credits;
+            $newname = $request->name;
+
+            // Verification
+            if ($cost < 0) {
+                return redirect()->back()->withErrors('You don\'t have enough credits!');
+            }
+            elseif ($online === 1) {
+                return redirect()->back()->withErrors('Leave game first!');
+            }
+            // Update
+            else {
+                Character::
+                where('Name', '=', $request->char)
+                    ->update([
+                        'Name' => $newname
+                    ]);
+                XWEB_CREDITS::
+                where('name', '=', $select->AccountID)
+                    ->update([
+                        'credits' => $cost
+                    ]);
+            }
+
+            return redirect()->back()->with('success', 'You have rename this character successfully!');
         }
     }
 }

@@ -13,6 +13,7 @@ use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PKCLEAR;
+use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
@@ -562,4 +563,18 @@ class AdminController extends Controller
         return redirect()->back()->withSuccess('You have changed PK Clear cost settings successfully!');
     }
 
+
+    public function rename()
+    {
+        $db = ['rename' => XWEB_RENAME::get()];
+        return view('ap.rename', $db);
+    }
+
+    public function do_rename(Request $request)
+    {
+        XWEB_RENAME::where('id', $request->id)
+            ->update(['credits' => $request->credits
+            ]);
+        return redirect()->back()->withSuccess('You have changed RENAME cost settings successfully!');
+    }
 }
