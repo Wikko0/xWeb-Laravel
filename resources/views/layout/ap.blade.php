@@ -256,6 +256,14 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminpanel/resetstats" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>ResetStats Settings</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-header">Add Systems</li>
 

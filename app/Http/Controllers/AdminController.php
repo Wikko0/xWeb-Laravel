@@ -15,6 +15,7 @@ use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
+use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -576,5 +577,23 @@ class AdminController extends Controller
             ->update(['credits' => $request->credits
             ]);
         return redirect()->back()->withSuccess('You have changed RENAME cost settings successfully!');
+    }
+
+    public function resetstats()
+    {
+        $db = ['resetstats' => XWEB_RESETSTATS::get()];
+        return view('ap.resetstats', $db);
+    }
+
+    public function do_resetstats(Request $request)
+    {
+        XWEB_RESETSTATS::where('id', $request->id)
+            ->update([
+                'credits' => $request->credits,
+                'zen' => $request->zen,
+                'level' => $request->level,
+                'resets' => $request->resets,
+            ]);
+        return redirect()->back()->withSuccess('You have changed ResetStats cost settings successfully!');
     }
 }

@@ -12,6 +12,7 @@ use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
+use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -47,7 +48,8 @@ class Controller extends BaseController
         $greset = XWEB_GRANDRESET::get();
         $pkclear = XWEB_PKCLEAR::get();
         $rename = XWEB_RENAME::get();
-        View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear, 'rename' => $rename]);
+        $resetstats = XWEB_RESETSTATS::get();
+        View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear, 'rename' => $rename, 'resetstats' => $resetstats]);
 
 
         /* Event Timer */

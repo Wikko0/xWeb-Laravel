@@ -10,6 +10,7 @@ use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
+use App\Models\XWEB_RESETSTATS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -405,6 +406,69 @@ class UserController extends Controller
             }
 
             return redirect()->back()->with('success', 'You have rename this character successfully!');
+        }
+    }
+
+    public function resetstats()
+    {
+
+        $char = Character::where('AccountID', '=', session('User'))->get();
+        return view('user.resetstats', ['char'=>$char]);
+
+    }
+
+    public function do_resetstats(Request $request)
+    {
+        if (empty($request->char))
+        {
+            return redirect()->back()->withErrors('Choose character first!');
+        }
+        else {
+            $online = $this->online($request->char);
+            $select = Character::where('Name', '=', $request->char)->first();
+            $fee = XWEB_RESETSTATS::first();
+            $credits = XWEB_CREDITS::where('name', '=', $select->AccountID)->first();
+            $newcredits = $credits->credits - $fee->credits;
+            $newzen = $select->Money - $fee->zen;
+            $newpoints = ($select->Strength + $select->Dexterity + $select->Vitality + $select->Energy) - 100;
+            $newstats = $select->LevelUpPoint + $newpoints;
+
+            // Verification
+            if ($newcredits < 0) {
+                return redirect()->back()->withErrors('You don\'t have enough credits!');
+            }
+            elseif ($select->cLevel < $fee->level) {
+                return redirect()->back()->withErrors('You don\'t have enough levels!');
+            }
+            elseif ($select->Resets < $fee->resets) {
+                return redirect()->back()->withErrors('You don\'t have enough resets!');
+            }
+            elseif ($newzen < 0) {
+                return redirect()->back()->withErrors('You don\'t have enough zen!');
+            }
+            elseif ($online === 1) {
+                return redirect()->back()->withErrors('Leave game first!');
+            }
+            // Update
+            else {
+                Character::
+                where('Name', '=', $request->char)
+                    ->update([
+                        'Strength' => 25,
+                        'Dexterity' => 25,
+                        'Vitality' => 25,
+                        'Energy' => 25,
+                        'LevelUpPoint' => $newstats,
+                        'Money' => $newzen
+                    ]);
+                XWEB_CREDITS::
+                where('name', '=', $select->AccountID)
+                    ->update([
+                        'credits' => $newcredits
+                    ]);
+            }
+
+            return redirect()->back()->with('success', 'You have reset stats successfully!');
         }
     }
 }

@@ -44,6 +44,8 @@ Route::get('/clearpk', [UserController::class, 'clearpk'])->middleware('user');
 Route::post('/clearpk', [UserController::class, 'do_clearpk']);
 Route::get('/rename', [UserController::class, 'rename'])->middleware('user');
 Route::post('/rename', [UserController::class, 'do_rename']);
+Route::get('/resetstats', [UserController::class, 'resetstats'])->middleware('user');
+Route::post('/resetstats', [UserController::class, 'do_resetstats']);
 
 // Admin Panel
 Route::get('/adminpanel/login', [AdminController::class, 'adminlogin']);
@@ -66,7 +68,9 @@ Route::get('/adminpanel/addstats', [AdminController::class, 'addstats'])->middle
 Route::get('/adminpanel/grand-reset', [AdminController::class, 'grandreset'])->middleware('admin');
 Route::get('/adminpanel/pkclear', [AdminController::class, 'pkclear'])->middleware('admin');
 Route::get('/adminpanel/rename', [AdminController::class, 'rename'])->middleware('admin');
+Route::get('/adminpanel/resetstats', [AdminController::class, 'resetstats'])->middleware('admin');
 
+Route::post('/adminpanel/resetstats', [AdminController::class, 'do_resetstats']);
 Route::post('/adminpanel/rename', [AdminController::class, 'do_rename']);
 Route::post('/adminpanel/pkclear', [AdminController::class, 'do_pkclear']);
 Route::post('/adminpanel/grand-reset', [AdminController::class, 'do_grandreset']);
