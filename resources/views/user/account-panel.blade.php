@@ -85,6 +85,27 @@
                 <div style="clear:both;"></div>
             </div>
 
+            <div class="separate"></div>
+
+            <div class="mychar-table">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Rank</td> <td>Nick</td> <td>Character</td> <td>Level</td> <td>Resets</td> <td>Strength</td> <td>Agility</td> <td>Vitality</td> <td>Energy</td> <td>PK</td>
+                    </tr>
+
+
+                    {!! $output !!}
+                    </tbody>
+                </table>
+
+
+
+
+
+            </div>
+
+            <div class="separate"></div>
 
             <div id="character-info">
                 <table>
