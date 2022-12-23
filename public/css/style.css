@@ -430,6 +430,19 @@ form input {
   background: url(../images/bosses-icon.png) no-repeat;
 }
 
+.credits-button {
+    background: url(../images/money-button.png) no-repeat;
+}
+.credits-button:after {
+    background: url(../images/money-icon.png) no-repeat;
+}
+.vip-button {
+    background: url(../images/vip-button.png) no-repeat;
+}
+.vip-button:after {
+    background: url(../images/vip-icon.png) no-repeat;
+}
+
 .slider-top .slick-dots {
   height: 38px;
   bottom: 0px;
