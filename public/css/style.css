@@ -1951,3 +1951,47 @@ form input {
     font-weight: 400;
 }
 
+/* PayPal - right manu
+-----------------------------------------------------------------------------*/
+
+.paypal-heading {
+    padding:15px 15px;
+    background-color:#4d77ae;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.paypal-title {
+    text-decoration:none;
+    color:white;
+}
+
+.paypal-title span:nth-child(1) {
+    width:40%;
+    display:inline-block;
+    font-weight:600;
+}
+.paypal-title span:nth-child(2) {
+    width:35%;
+    display:inline-block;
+}
+.paypal-title span:nth-child(3) {
+    float:right;
+}
+.paybutton {
+    background: #4f42a5;
+    width: 100px;
+    padding: 0px 0px 0px 0px;
+    height: 45px;
+    border: none;
+    border-radius: 50px;
+    color: #f7f6fb;
+    font-size: 14px;
+    font-weight: 600;
+}
+.paybutton:hover {
+    background: #614de1;
+}
+.paypal-logo {
+    background: url(../images/paypal.png) no-repeat;
+    height: 55px;
+}

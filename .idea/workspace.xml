@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b1526486-f488-4272-bccf-fa988bf4a6af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/xController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/xController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/block/rightblock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/rightblock.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/others/modals.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/others/modals.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/account-panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account-panel.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +189,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669824114223</updated>
       <workItem from="1669824115443" duration="22709000" />
-      <workItem from="1671798444641" duration="8039000" />
+      <workItem from="1671798444641" duration="12704000" />
     </task>
     <servers />
   </component>

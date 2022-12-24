@@ -55,4 +55,28 @@
             <p><button class="download-link">Login</button></p>
         </form>
     </div><!-- modal_div -->
+
+    <div id="modal6" class="modal_div modal-links modal-ev">
+        <span class="modal_close"></span>
+        <div class="modal-block">
+            <div class="modal-links-title event">
+                <b>Buy</b> <br>
+                Credits
+            </div>
+
+
+<div class="paypal-logo"></div>
+
+
+            <div class="paypal-heading">
+                <h4 class="paypal-title">
+                    <span>Mega Package</span>
+                    <span>3000 Credits</span>
+                    <span> <button type="button" class="paybutton">50$ BUY</button> </span>
+                </h4>
+            </div>
+
+
+        </div><!-- modal-block -->
+    </div><!-- modal_div -->
     <div id="overlay"></div>

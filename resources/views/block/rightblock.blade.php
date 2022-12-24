@@ -8,7 +8,7 @@
 
 
                 <div class="countdown flex">
-                    <a href="#modal3" class="open_modal credits-button">Buy <br> Credits</a>
+                    <a href="#modal6" class="open_modal credits-button">Buy <br> Credits</a>
                     <a href="#modal4" class="open_modal vip-button">Buy <br> VIP</a>
                 </div>
             @else
