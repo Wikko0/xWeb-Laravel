@@ -12,6 +12,7 @@ use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_PAYPAL;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
@@ -586,6 +587,24 @@ class AdminController extends Controller
     }
 
     public function do_resetstats(Request $request)
+    {
+        XWEB_RESETSTATS::where('id', $request->id)
+            ->update([
+                'credits' => $request->credits,
+                'zen' => $request->zen,
+                'level' => $request->level,
+                'resets' => $request->resets,
+            ]);
+        return redirect()->back()->withSuccess('You have changed ResetStats cost settings successfully!');
+    }
+
+    public function paypal()
+    {
+        $db = ['paypal' => XWEB_PAYPAL::get()];
+        return view('ap.paypal', $db);
+    }
+
+    public function do_paypal(Request $request)
     {
         XWEB_RESETSTATS::where('id', $request->id)
             ->update([

@@ -320,6 +320,14 @@
                         </ul>
                     </li>
 
+                    <li class="nav-header">Payment System</li>
+                    <li class="nav-item">
+                        <a href="/adminpanel/paypal" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Paypal Manage</p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

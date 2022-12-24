@@ -70,7 +70,9 @@ Route::get('/adminpanel/grand-reset', [AdminController::class, 'grandreset'])->m
 Route::get('/adminpanel/pkclear', [AdminController::class, 'pkclear'])->middleware('admin');
 Route::get('/adminpanel/rename', [AdminController::class, 'rename'])->middleware('admin');
 Route::get('/adminpanel/resetstats', [AdminController::class, 'resetstats'])->middleware('admin');
+Route::get('/adminpanel/paypal', [AdminController::class, 'paypal'])->middleware('admin');
 
+Route::post('/adminpanel/paypal', [AdminController::class, 'do_paypal']);
 Route::post('/adminpanel/resetstats', [AdminController::class, 'do_resetstats']);
 Route::post('/adminpanel/rename', [AdminController::class, 'do_rename']);
 Route::post('/adminpanel/pkclear', [AdminController::class, 'do_pkclear']);

@@ -23,8 +23,8 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -443,8 +443,8 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         ),
         'Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
-            1 => __DIR__ . '/..' . '/php-http/message/src',
+            0 => __DIR__ . '/..' . '/php-http/message/src',
+            1 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'Http\\Discovery\\' => 
         array (
@@ -571,6 +571,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\doController' => __DIR__ . '/../..' . '/app/Http/Controllers/doController.php',
         'App\\Http\\Controllers\\xController' => __DIR__ . '/../..' . '/app/Http/Controllers/xController.php',
@@ -599,6 +600,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Models\\XWEB_HOF' => __DIR__ . '/../..' . '/app/Models/XWEB_HOF.php',
         'App\\Models\\XWEB_NEWS' => __DIR__ . '/../..' . '/app/Models/XWEB_NEWS.php',
         'App\\Models\\XWEB_PAYMENTS' => __DIR__ . '/../..' . '/app/Models/XWEB_PAYMENTS.php',
+        'App\\Models\\XWEB_PAYPAL' => __DIR__ . '/../..' . '/app/Models/XWEB_PAYPAL.php',
         'App\\Models\\XWEB_PKCLEAR' => __DIR__ . '/../..' . '/app/Models/XWEB_PKCLEAR.php',
         'App\\Models\\XWEB_RENAME' => __DIR__ . '/../..' . '/app/Models/XWEB_RENAME.php',
         'App\\Models\\XWEB_RESET' => __DIR__ . '/../..' . '/app/Models/XWEB_RESET.php',
