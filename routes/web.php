@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\doController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\xController;
 /*
@@ -95,5 +96,13 @@ Route::delete('/adminpanel/download', [AdminController::class, 'do_download_dele
 Route::post('/adminpanel/announce', [AdminController::class, 'do_adminannounce']);
 Route::post('/adminpanel/seo', [AdminController::class, 'do_adminseo']);
 Route::post('/adminpanel/login', [AdminController::class, 'do_adminlogin']);
+
+
+// Payment
+Route::post('/pay', [PaymentController::class, 'pay']);
+Route::get('/success', [PaymentController::class, 'success']);
+Route::get('/error', [PaymentController::class, 'error']);
+
+
 
 
