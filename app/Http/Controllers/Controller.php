@@ -10,6 +10,7 @@ use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PAYPAL;
+use App\Models\XWEB_PAYPAL_PACKAGE;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
@@ -54,7 +55,8 @@ class Controller extends BaseController
 
         /* Payments */
         $paypal = XWEB_PAYPAL::get();
-        View::share(['paypal' => $paypal]);
+        $paypal_pack = XWEB_PAYPAL_PACKAGE::get();
+        View::share(['paypal' => $paypal, 'paypal_pack' => $paypal_pack]);
 
 
         /* Event Timer */

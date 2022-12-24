@@ -68,21 +68,21 @@
 
         <div class="paypal-logo"></div>
 
+        @foreach($paypal_pack->take(4) as $value)
         <form action="/pay" method="post">
-            @csrf
-            <input type="hidden" name="amount" value="10">
 
+            @csrf
+            <input type="hidden" name="amount" value="{{$value->amount}}">
         <div class="paypal-heading">
             <h4 class="paypal-title">
 
-                    <span>Mega Package</span>
-                    <span>3000 Credits</span>
-                    <span> <button type="submit" class="paybutton">50$ BUY</button> </span>
-
+                    <span>{{$value->name}}</span>
+                    <span>{{$value->credits}} Credits</span>
+                    <span> <button type="submit" class="paybutton">{{$value->amount}}$ BUY</button> </span>
             </h4>
         </div>
-
         </form>
+        @endforeach
 
     </div><!-- modal-block -->
 </div><!-- modal_div -->
