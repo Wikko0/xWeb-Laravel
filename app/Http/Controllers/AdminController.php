@@ -13,6 +13,7 @@ use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PAYPAL;
+use App\Models\XWEB_PAYPAL_PACKAGE;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
@@ -606,13 +607,43 @@ class AdminController extends Controller
 
     public function do_paypal(Request $request)
     {
-        XWEB_RESETSTATS::where('id', $request->id)
+        XWEB_PAYPAL::where('id', $request->id)
             ->update([
-                'credits' => $request->credits,
-                'zen' => $request->zen,
-                'level' => $request->level,
-                'resets' => $request->resets,
+                'client_id' => $request->client_id,
+                'client_secret' => $request->client_secret,
+                'currency' => $request->currency
             ]);
-        return redirect()->back()->withSuccess('You have changed ResetStats cost settings successfully!');
+        return redirect()->back()->withSuccess('You have changed Paypal settings successfully!');
+    }
+
+    public function paypal_pack()
+    {
+        $db = ['paypal_pack' => XWEB_PAYPAL_PACKAGE::get()];
+        return view('ap.paypal_pack', $db);
+    }
+
+    public function do_paypal_pack(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'unique:XWEB.XWEB_PAYPAL_PACKAGE,name'
+        ]);
+
+        XWEB_PAYPAL_PACKAGE::
+        insert(['name' => $request->name, 'amount' => $request->amount, 'credits' => $request->credits]);
+
+
+        return redirect()->back()->withSuccess('You have added this package successfully!');
+    }
+
+    public function paypal_pack_delete(Request $request)
+    {
+
+        foreach ($request->id as $key => $items) {
+
+            XWEB_PAYPAL_PACKAGE::where('id', $items)
+                ->delete();
+        }
+
+        return redirect()->back()->withSuccess('Successfully deleted package!');
     }
 }

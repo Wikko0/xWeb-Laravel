@@ -9,6 +9,7 @@ use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_PAYPAL;
 use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
@@ -50,6 +51,10 @@ class Controller extends BaseController
         $rename = XWEB_RENAME::get();
         $resetstats = XWEB_RESETSTATS::get();
         View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear, 'rename' => $rename, 'resetstats' => $resetstats]);
+
+        /* Payments */
+        $paypal = XWEB_PAYPAL::get();
+        View::share(['paypal' => $paypal]);
 
 
         /* Event Timer */

@@ -59,58 +59,23 @@
                                 <div class="card-body">
                                     <input type="hidden" name="id" value="{{$values->id}}">
                                     <div class="form-group">
-                                        <label for="MaxResets">Max Resets</label>
-                                        <input type="number" class="form-control" id="maxresets" name="maxresets" value="{{$values->maxresets}}">
+                                        <label>Client ID</label>
+                                        <input type="text" class="form-control" name="client_id" value="{{$values->client_id}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="ResetLevel">Reset Level</label>
-                                        <input type="number" class="form-control" id="level" name="level" value="{{$values->level}}">
+                                        <label>Client Secret</label>
+                                        <input type="text" class="form-control" name="client_secret" value="{{$values->client_secret}}">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="ResetZen">Zen for Reset</label>
-                                        <input type="number" class="form-control" id="zen" name="zen" value="{{$values->zen}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="bkpoints">Blade Knight Points</label>
-                                        <input type="number" class="form-control" id="bkpoints" name="bkpoints" value="{{$values->bkpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="smpoints">Soul Master Points</label>
-                                        <input type="number" class="form-control" id="smpoints" name="smpoints" value="{{$values->smpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="elfpoints">Elf Points</label>
-                                        <input type="number" class="form-control" id="elfpoints" name="elfpoints" value="{{$values->elfpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="mgpoints">Magic Gladiator Points</label>
-                                        <input type="number" class="form-control" id="mgpoints" name="mgpoints" value="{{$values->mgpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="dlpoints">Dark Lord Points</label>
-                                        <input type="number" class="form-control" id="dlpoints" name="dlpoints" value="{{$values->dlpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="sumpoints">Summoner Points</label>
-                                        <input type="number" class="form-control" id="sumpoints" name="sumpoints" value="{{$values->sumpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="rfpoints">Rage Fighter Points</label>
-                                        <input type="number" class="form-control" id="rfpoints" name="rfpoints" value="{{$values->rfpoints}}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="glpoints">Grow Lancer Points</label>
-                                        <input type="number" class="form-control" id="glpoints" name="glpoints" value="{{$values->glpoints}}">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Currency</label>
+                                            <select name="currency" class="form-control">
+                                                <option value="USD">USD</option>
+                                                <option value="EUR">EUR</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 @endforeach
 

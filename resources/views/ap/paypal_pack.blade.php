@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Download Settings</li>
+                            <li class="breadcrumb-item active">Paypal Package</li>
                         </ol>
                     </div>
                 </div>
@@ -49,58 +49,36 @@
                         <!-- seo form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Download Settings</h3>
+                                <h3 class="card-title">Paypal Package</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form method="post" action="/adminpanel/download">
+                            <form method="post" action="/adminpanel/paypal-pack">
                                 @csrf
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="FileName">File Name</label>
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <label>Package name</label>
+                                        <input type="text" class="form-control" name="name">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="FileMB">File MB</label>
-                                        <input type="number" class="form-control" id="mb" name="mb">
+                                        <label>Amount</label>
+                                        <input type="number" class="form-control" name="amount">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="Link">Link</label>
-                                        <input type="url" class="form-control" id="link" name="link">
+                                        <label>Credits Reward</label>
+                                        <input type="number" class="form-control" name="credits">
                                     </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Version</label>
-                                            <select name="version" id="version" class="form-control">
-                                                <option value="full">Full Version</option>
-                                                <option value="lite">Lite Version</option>
-                                                <option value="update">Update</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>From</label>
-                                            <select name="site" id="site" class="form-control">
-                                                <option value="mega">MEGA</option>
-                                                <option value="google">Google Drive</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
 
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary col-12">Submit</button>
                                     </div>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card -->
@@ -108,7 +86,7 @@
                     </div>
 
 
-
+</div>
                 </div>
         </section>
 
@@ -120,13 +98,13 @@
                         <!-- seo form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">All Downlaod Links</h3>
+                                <h3 class="card-title">All Packages</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                                @foreach($download as $values)
-                                <form method="post" action="/adminpanel/download">
+                                @foreach($paypal_pack as $values)
+                                <form method="post" action="/adminpanel/paypal-pack">
                                     @method('DELETE')
                                     @csrf
 
@@ -143,8 +121,8 @@
                                         </div>
                                         <!-- /btn-group -->
                                         <input type="text" readonly class="form-control" name="name[]" value="{{$values->name}}">
-                                        <input type="text" readonly class="form-control" value="{{$values->mb}}MB">
-                                        <input type="text" readonly class="form-control" value="{{$values->link}}">
+                                        <input type="text" readonly class="form-control" value="{{$values->amount}}$">
+                                        <input type="text" readonly class="form-control" value="{{$values->credits}} Credits">
                                         <input type="hidden" class="form-control" name="id[]" value="{{$values->id}}">
                                     </div>
                                     </div>
@@ -160,7 +138,7 @@
 
                     </div>
 
-
+                </div>
                 </div>
         </section>
         <!-- /.content -->

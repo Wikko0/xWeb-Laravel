@@ -322,11 +322,29 @@
 
                     <li class="nav-header">Payment System</li>
                     <li class="nav-item">
-                        <a href="/adminpanel/paypal" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Paypal Manage</p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                Paypal Manage
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminpanel/paypal" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Paypal Settings</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/adminpanel/paypal-pack" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Paypal Package</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
 
                 </ul>
             </nav>
