@@ -471,4 +471,11 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'You have reset stats successfully!');
         }
     }
+
+    public function buycredits()
+    {
+
+        return view('user.buycredits');
+
+    }
 }
