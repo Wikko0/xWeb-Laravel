@@ -16,12 +16,12 @@ use \App\Http\Controllers\doController;
                 SERVER INFORMATION
             </li>
 
-            <li>Server name <span>2</span> </li>
-            <li>Version <span>2</span> </li>
-            <li>Experience <span>2</span> </li>
-            <li>Drop Rate <span>2</span> </li>
-            <li>Zen Drop <span>2</span> </li>
-            <li>Points Per Level <span>2</span> </li>
+            <li>Server name <span>xWeb</span> </li>
+            <li>Version <span>Season VI</span> </li>
+            <li>Experience <span>100x</span> </li>
+            <li>Drop Rate <span>20%</span> </li>
+            <li>Zen Drop <span>10%</span> </li>
+            <li>Points Per Level <span>5/7</span> </li>
 
         </ul>
 

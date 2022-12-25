@@ -37,6 +37,7 @@ return array(
     'App\\Models\\XWEB_DOWNLOAD' => $baseDir . '/app/Models/XWEB_DOWNLOAD.php',
     'App\\Models\\XWEB_GRANDRESET' => $baseDir . '/app/Models/XWEB_GRANDRESET.php',
     'App\\Models\\XWEB_HOF' => $baseDir . '/app/Models/XWEB_HOF.php',
+    'App\\Models\\XWEB_INFORMATION' => $baseDir . '/app/Models/XWEB_INFORMATION.php',
     'App\\Models\\XWEB_NEWS' => $baseDir . '/app/Models/XWEB_NEWS.php',
     'App\\Models\\XWEB_PAYMENTS' => $baseDir . '/app/Models/XWEB_PAYMENTS.php',
     'App\\Models\\XWEB_PAYPAL' => $baseDir . '/app/Models/XWEB_PAYPAL.php',

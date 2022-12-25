@@ -598,6 +598,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Models\\XWEB_DOWNLOAD' => __DIR__ . '/../..' . '/app/Models/XWEB_DOWNLOAD.php',
         'App\\Models\\XWEB_GRANDRESET' => __DIR__ . '/../..' . '/app/Models/XWEB_GRANDRESET.php',
         'App\\Models\\XWEB_HOF' => __DIR__ . '/../..' . '/app/Models/XWEB_HOF.php',
+        'App\\Models\\XWEB_INFORMATION' => __DIR__ . '/../..' . '/app/Models/XWEB_INFORMATION.php',
         'App\\Models\\XWEB_NEWS' => __DIR__ . '/../..' . '/app/Models/XWEB_NEWS.php',
         'App\\Models\\XWEB_PAYMENTS' => __DIR__ . '/../..' . '/app/Models/XWEB_PAYMENTS.php',
         'App\\Models\\XWEB_PAYPAL' => __DIR__ . '/../..' . '/app/Models/XWEB_PAYPAL.php',
