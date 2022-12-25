@@ -27,6 +27,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public static $paypal;
+
     public function __construct() {
         /* All Variable */
         $admin = XWEB_ADMINCP::get();

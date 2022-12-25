@@ -73,6 +73,7 @@
 
             @csrf
             <input type="hidden" name="amount" value="{{$value->amount}}">
+            <input type="hidden" name="credits" value="{{$value->credits}}">
         <div class="paypal-heading">
             <h4 class="paypal-title">
 

@@ -12,4 +12,10 @@ class XWEB_PAYPAL extends Model
     protected $table = 'XWEB_PAYPAL';
     protected $connection = 'XWEB';
     public $timestamps = false;
+
+    public function ClientId()
+    {
+        return $this->currency;
+    }
+
 }

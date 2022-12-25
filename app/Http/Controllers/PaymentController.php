@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_PAYMENTS;
+use App\Models\XWEB_PAYPAL;
 use Faker\Provider\Payment;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
@@ -11,25 +12,30 @@ use Omnipay\Omnipay;
 class PaymentController extends Controller
 {
     private $gateway;
+    private $client;
 
     public function __construct()
     {
+        $this->client = XWEB_PAYPAL::first();
         $this->gateway = Omnipay::create('PayPal_Rest');
-        $this->gateway->setClientId(env('PAYPAL_CLIENT_ID'));
-        $this->gateway->setSecret(env('PAYPAL_CLIENT_SECRET'));
+        $this->gateway->setClientId($this->client->client_id);
+        $this->gateway->setSecret($this->client->client_secret);
         $this->gateway->setTestMode(true);
     }
 
     public function pay(Request $request)
     {
         try {
-            $response = $this->gateway->purchase(array(
-               'amount' => $request->amount,
-               'currency' => env('PAYPAL_CURRENCY'),
+
+            $request = $this->gateway->purchase(array(
+                'amount' => $request->amount,
+                'currency' => $this->client->currency,
+                'description' => $request->credits,
                 'returnUrl' => url('success'),
                 'cancelUrl' => url('error')
-            ))->send();
+            ));
 
+            $response = $request->send();
             if ($response->isRedirect()){
                 $response->redirect();
             }else{
@@ -43,6 +49,7 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
+
         if ($request->paymentId && $request->PayerID)
         {
             $transaction = $this->gateway->completePurchase(array(
@@ -51,7 +58,6 @@ class PaymentController extends Controller
             ));
 
             $response = $transaction->send();
-
             if ($response->isSuccessful())
             {
                 $arr = $response->getData();
@@ -61,13 +67,13 @@ class PaymentController extends Controller
                 $payment->payer_id = $arr['payer']['payer_info']['payer_id'];
                 $payment->payer_email = $arr['payer']['payer_info']['email'];
                 $payment->amount = $arr['transactions'][0]['amount']['total'];
-                $payment->currency = env('PAYPAL_CURRENCY');
+                $payment->currency = $this->client->currency;
                 $payment->payment_status = $arr['state'];
 
                 $payment->save();
 
                 $credits = XWEB_CREDITS::where('name', '=', session('User'))->first();
-                $newcredits = 321 + $credits->credits;
+                $newcredits = $arr['transactions'][0]['description'] + $credits->credits;
                 XWEB_CREDITS::where('name', $credits->name)
                     ->update(['credits' => $newcredits,
                 ]);
