@@ -312,4 +312,8 @@ class xController extends Controller
         return view('news', ['news'=> $news, 'events'=> $events, 'updates'=> $updates]);
     }
 
+    public function information()
+    {
+        return view('information');
+    }
 }

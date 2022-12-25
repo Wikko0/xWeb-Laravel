@@ -88,7 +88,7 @@
                             Game
                             <span>Info</span>
                         </div>
-                        <a href="">Learn More</a>
+                        <a href="/information">Learn More</a>
                     </div>
                 </div>
             </div><!-- block-info-right -->

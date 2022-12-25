@@ -25,6 +25,7 @@ Route::get('/ranking', [xController::class, 'ranking']);
 Route::get('/news', [xController::class, 'news']);
 Route::get('/login', [xController::class, 'login']);
 Route::get('/account-panel', [xController::class, 'account_panel']);
+Route::get('/information', [xController::class, 'information']);
 
 Route::get('/logout', [doController::class, 'do_logout']);
 

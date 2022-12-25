@@ -2026,3 +2026,42 @@ form input {
     background: url(../images/paypal.png) no-repeat;
     height: 55px;
 }
+
+/* Information Page
+-----------------------------------------------------------------------------*/
+
+.information-table {
+    display: flex;
+    justify-content: center;
+}
+.information-table ul {
+    color: #1e1c2a;
+    margin-bottom: 20px;
+    width: 80%;
+}
+.information-table ul li {
+    vertical-align: middle;
+    padding: 15px 20px;
+    height: 52px;
+}
+.information-table ul span {
+    float: right;
+}
+.information-table ul li {
+    background: #f7f7f7;
+    border: 1px solid #bcbcbc;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+.information-table ul li:first-child {
+    font-size: 18px;
+    font-weight: 600;
+    background: #E1E1E1;
+    border: 1px solid #bcbcbc;
+}
+.information-table ul li:first-child td:nth-child(1) {
+    font-weight: 400;
+}
+.information-table-table ul li:first-child td:nth-child(2) {
+    font-weight: 400;
+}
