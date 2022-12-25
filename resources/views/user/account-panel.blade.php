@@ -217,6 +217,39 @@
                     </table>
                 </div>
 
+                <div class="separate"></div>
+
+                <div id="paid-info">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="/buycredits">
+                                    <div>
+                                        <ul>
+                                            <p><ul>Buy Credits</ul></p>
+
+                                            <span>Get credits to use the paid plugins</span> <br>&nbsp;
+                                        </ul>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/buyvip">
+                                    <div>
+                                        <ul>
+                                            <p><ul>Buy VIP</ul></p>
+
+                                            <span>Get VIP for extra exp,drop and etc.</span> <br>&nbsp;
+                                        </ul>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
                 <a href="/logout">
                     <button class="big">Logout</button>
                 </a>

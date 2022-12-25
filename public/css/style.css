@@ -344,16 +344,6 @@ form input {
   margin-bottom: 25px;
 }
 
-.play-button {
-  background: url(../images/play-button.png) no-repeat;
-  width: 62px;
-  height: 60px;
-  display: block;
-  transition: 0.3s;
-}
-.play-button:hover {
-  background: url(../images/play-button.png) -62px 0px no-repeat;
-}
 .acc-panel {
   background: url(../images/acc-icon.png) left no-repeat;
   height: 55px;
@@ -1890,12 +1880,53 @@ form input {
     all: initial;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .separate {
     border-bottom: 1px solid #cbc9d5;
     padding-bottom: 30px;
     margin-bottom: 55px;
 }
 
+#paid-info{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+#paid-info ul{
+    list-style-type: none;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    background: url(../images/stars.gif);
+}
+#paid-info ul li{
+    padding: 0px;
+    margin: 0px;
+}
+#paid-info tbody tr {background: none;border: none;}
+#paid-info tbody tr td a{
+    font-size: 16px;
+    font-weight: bold;
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    color:#4f42a5;
+}
+#paid-info div{
+    padding-left: 10px;
+    border-bottom: 2px solid #4f42a5;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-collapse: separate;
+    width: 300px;
+}
+#paid-info div:hover{
+    color: #614de1;
+    border-bottom: 3px solid #614de1;
+}
+#paid-info tbody tr td span{
+    all: initial;
+    font-family: Arial, Helvetica, sans-serif;
+}
 /* Account Panel - Characters
 -----------------------------------------------------------------------------*/
 
