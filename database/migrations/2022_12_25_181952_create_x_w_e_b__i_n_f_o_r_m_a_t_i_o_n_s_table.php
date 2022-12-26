@@ -15,12 +15,12 @@ class CreateXWEBINFORMATIONSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_INFORMATION', function (Blueprint $table) {
             $table->id();
-            $table->string('sname');
-            $table->string('version');
-            $table->string('experience');
-            $table->string('droprate');
-            $table->string('zenrate');
-            $table->string('ppl');
+            $table->string('sname')->nullable();
+            $table->string('version')->nullable();
+            $table->string('experience')->nullable();
+            $table->string('droprate')->nullable();
+            $table->string('zenrate')->nullable();
+            $table->string('ppl')->nullable();
         });
     }
 

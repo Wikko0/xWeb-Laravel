@@ -15,17 +15,17 @@ class CreateXWEBRESETSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_RESET', function (Blueprint $table) {
             $table->id();
-            $table->integer('level');
-            $table->integer('zen');
-            $table->integer('bkpoints');
-            $table->integer('smpoints');
-            $table->integer('elfpoints');
-            $table->integer('mgpoints');
-            $table->integer('dlpoints');
-            $table->integer('sumpoints');
-            $table->integer('rfpoints');
-            $table->integer('glpoints');
-            $table->integer('maxresets');
+            $table->integer('level')->nullable();
+            $table->integer('zen')->nullable();
+            $table->integer('bkpoints')->nullable();
+            $table->integer('smpoints')->nullable();
+            $table->integer('elfpoints')->nullable();
+            $table->integer('mgpoints')->nullable();
+            $table->integer('dlpoints')->nullable();
+            $table->integer('sumpoints')->nullable();
+            $table->integer('rfpoints')->nullable();
+            $table->integer('glpoints')->nullable();
+            $table->integer('maxresets')->nullable();
 
         });
     }

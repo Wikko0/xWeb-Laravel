@@ -15,11 +15,11 @@ class CreateXWEBGRANDRESETSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_GRANDRESET', function (Blueprint $table) {
             $table->id();
-            $table->integer('resets');
-            $table->integer('maxgresets');
-            $table->integer('level');
-            $table->integer('zen');
-            $table->integer('credits');
+            $table->integer('resets')->nullable();
+            $table->integer('maxgresets')->nullable();
+            $table->integer('level')->nullable();
+            $table->integer('zen')->nullable();
+            $table->integer('credits')->nullable();
         });
     }
 

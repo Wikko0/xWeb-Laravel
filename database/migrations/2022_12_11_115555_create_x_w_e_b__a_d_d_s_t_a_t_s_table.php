@@ -15,7 +15,7 @@ class CreateXWEBADDSTATSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_ADDSTATS', function (Blueprint $table) {
             $table->id();
-            $table->integer('maxpoints');
+            $table->integer('maxpoints')->nullable();
         });
     }
 

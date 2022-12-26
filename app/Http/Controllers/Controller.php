@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\XWEB_ADD_INFORMATION;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_ANNOUNCE;
@@ -44,7 +45,8 @@ class Controller extends BaseController
 
         /* Information System */
         $information = XWEB_INFORMATION::get();
-        View::share(['information' => $information]);
+        $addinfo = XWEB_ADD_INFORMATION::get();
+        View::share(['information' => $information, 'addinfo' => $addinfo]);
 
         /* News System */
         $new_news = XWEB_NEWS::where('specific', '=', 'news')->get();

@@ -76,7 +76,9 @@ Route::get('/adminpanel/resetstats', [AdminController::class, 'resetstats'])->mi
 Route::get('/adminpanel/paypal', [AdminController::class, 'paypal'])->middleware('admin');
 Route::get('/adminpanel/paypal-pack', [AdminController::class, 'paypal_pack'])->middleware('admin');
 Route::get('/adminpanel/information', [AdminController::class, 'information'])->middleware('admin');
+Route::get('/adminpanel/addinfo', [AdminController::class, 'addinfo'])->middleware('admin');
 
+Route::post('/adminpanel/addinfo', [AdminController::class, 'do_addinfo']);
 Route::post('/adminpanel/information', [AdminController::class, 'do_information']);
 Route::delete('/adminpanel/paypal-pack', [AdminController::class, 'paypal_pack_delete']);
 Route::post('/adminpanel/paypal-pack', [AdminController::class, 'do_paypal_pack']);

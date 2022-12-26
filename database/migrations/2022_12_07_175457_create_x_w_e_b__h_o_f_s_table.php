@@ -15,10 +15,10 @@ class CreateXWEBHOFSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_HOF', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('class');
-            $table->integer('wins');
-            $table->string('status');
+            $table->string('name')->nullable();
+            $table->string('class')->nullable();
+            $table->integer('wins')->nullable();
+            $table->string('status')->nullable();
 
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateXWEBPAYPALPACKAGESTable extends Migration
+class CreateXWEBADDINFORMATIONSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateXWEBPAYPALPACKAGESTable extends Migration
      */
     public function up()
     {
-        Schema::connection('XWEB')->create('XWEB_PAYPAL_PACKAGE', function (Blueprint $table) {
+        Schema::connection('XWEB')->create('XWEB_ADD_INFORMATION', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('amount')->nullable();
-            $table->string('credits')->nullable();
+            $table->integer('row');
+            $table->text('information')->nullable();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateXWEBPAYPALPACKAGESTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('XWEB_PAYPAL_PACKAGE');
+        Schema::dropIfExists('XWEB_ADD_INFORMATION');
     }
 }

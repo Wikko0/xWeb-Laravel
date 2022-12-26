@@ -15,7 +15,7 @@ class CreateXWEBRENAMESTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_RENAME', function (Blueprint $table) {
             $table->id();
-            $table->integer('credits');
+            $table->integer('credits')->nullable();
         });
     }
 

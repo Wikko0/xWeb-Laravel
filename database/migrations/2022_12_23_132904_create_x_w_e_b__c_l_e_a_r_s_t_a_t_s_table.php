@@ -15,10 +15,10 @@ class CreateXWEBCLEARSTATSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_RESETSTATS', function (Blueprint $table) {
             $table->id();
-            $table->integer('credits');
-            $table->integer('zen');
-            $table->integer('level');
-            $table->integer('resets');
+            $table->integer('credits')->nullable();
+            $table->integer('zen')->nullable();
+            $table->integer('level')->nullable();
+            $table->integer('resets')->nullable();
         });
     }
 

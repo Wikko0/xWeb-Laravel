@@ -9,6 +9,13 @@ use \App\Http\Controllers\doController;
 <main class="content">
     <h1>Information</h1>
 
+    <div>
+        @foreach($addinfo as $values)
+            {!! $values->information !!}
+        @endforeach
+    </div>
+
+
 @foreach($information as $values)
     <div class="information-table">
         <ul>
@@ -36,7 +43,7 @@ use \App\Http\Controllers\doController;
             <li>Total Accounts <span>{{$countacc}}</span> </li>
             <li>Total Characters <span>{{$countchar}}</span> </li>
             <li>Total Guilds <span>{{$countguild}}</span> </li>
-            <li>Players Online <span>{{$countonline}}</span> </li>
+            <li>Players Online <span style="color: #00bb00">{{$countonline}}</span> </li>
 
 
         </ul>

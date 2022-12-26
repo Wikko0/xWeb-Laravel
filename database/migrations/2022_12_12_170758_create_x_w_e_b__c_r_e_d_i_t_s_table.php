@@ -15,8 +15,8 @@ class CreateXWEBCREDITSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_CREDITS', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('credits');
+            $table->string('name')->nullable();
+            $table->integer('credits')->nullable();
         });
     }
 

@@ -15,7 +15,7 @@ class CreateXWEBPKCLEARSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_PKCLEAR', function (Blueprint $table) {
             $table->id();
-            $table->integer('zen');
+            $table->integer('zen')->nullable();
         });
     }
 

@@ -15,8 +15,8 @@ class CreateXWEBCHARINFOSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_CHAR_INFO', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('gresets');
+            $table->string('name')->nullable();
+            $table->integer('gresets')->nullable();
         });
     }
 

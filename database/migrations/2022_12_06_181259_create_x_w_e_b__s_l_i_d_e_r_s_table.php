@@ -15,7 +15,7 @@ class CreateXWEBSLIDERSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_SLIDERS', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
         });
     }
 

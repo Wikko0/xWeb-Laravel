@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\MEMB_INFO;
+use App\Models\XWEB_ADD_INFORMATION;
 use App\Models\XWEB_ADDSTATS;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
@@ -666,5 +667,21 @@ class AdminController extends Controller
                 'ppl' => $request->ppl
             ]);
         return redirect()->back()->withSuccess('You have changed Information successfully!');
+    }
+
+    public function addinfo()
+    {
+        $checkinfo = XWEB_ADD_INFORMATION::get();
+        return view('ap.addinfo',['checkinfo' => $checkinfo]);
+    }
+
+    public function do_addinfo(Request $request)
+    {
+
+        XWEB_ADD_INFORMATION::
+        updateOrCreate(
+            ['row' => 1],
+            ['information' => $request->information]);
+        return redirect()->back()->withSuccess('You have added this information successfully!');
     }
 }

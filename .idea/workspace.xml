@@ -2,14 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1526486-f488-4272-bccf-fa988bf4a6af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/ap/information.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/ap/addinfo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/xController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/xController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_04_170536_create_x_w_e_b__a_d_m_i_n_l_o_g_i_n_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_04_170536_create_x_w_e_b__a_d_m_i_n_l_o_g_i_n_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_06_181259_create_x_w_e_b__s_l_i_d_e_r_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_06_181259_create_x_w_e_b__s_l_i_d_e_r_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_07_175457_create_x_w_e_b__h_o_f_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_07_175457_create_x_w_e_b__h_o_f_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_11_112815_create_x_w_e_b__r_e_s_e_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_11_112815_create_x_w_e_b__r_e_s_e_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_11_115555_create_x_w_e_b__a_d_d_s_t_a_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_11_115555_create_x_w_e_b__a_d_d_s_t_a_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_11_121326_create_x_w_e_b__g_r_a_n_d_r_e_s_e_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_11_121326_create_x_w_e_b__g_r_a_n_d_r_e_s_e_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_170758_create_x_w_e_b__c_r_e_d_i_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_170758_create_x_w_e_b__c_r_e_d_i_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_171825_create_x_w_e_b__c_h_a_r__i_n_f_o_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_171825_create_x_w_e_b__c_h_a_r__i_n_f_o_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_14_125347_create_x_w_e_b__p_k_c_l_e_a_r_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_14_125347_create_x_w_e_b__p_k_c_l_e_a_r_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_15_191929_create_x_w_e_b__r_e_n_a_m_e_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_15_191929_create_x_w_e_b__r_e_n_a_m_e_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_23_132904_create_x_w_e_b__c_l_e_a_r_s_t_a_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_23_132904_create_x_w_e_b__c_l_e_a_r_s_t_a_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_24_150919_create_x_w_e_b__p_a_y_m_e_n_t_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_24_150919_create_x_w_e_b__p_a_y_m_e_n_t_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_24_162734_create_x_w_e_b__p_a_y_p_a_l_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_24_162734_create_x_w_e_b__p_a_y_p_a_l_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_24_164753_create_x_w_e_b__p_a_y_p_a_l__p_a_c_k_a_g_e_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_24_164753_create_x_w_e_b__p_a_y_p_a_l__p_a_c_k_a_g_e_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_25_181952_create_x_w_e_b__i_n_f_o_r_m_a_t_i_o_n_s_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_25_181952_create_x_w_e_b__i_n_f_o_r_m_a_t_i_o_n_s_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ap/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ap/information.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/information.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +220,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669824114223</updated>
       <workItem from="1669824115443" duration="22709000" />
-      <workItem from="1671798444641" duration="41448000" />
+      <workItem from="1671798444641" duration="43305000" />
     </task>
     <servers />
   </component>

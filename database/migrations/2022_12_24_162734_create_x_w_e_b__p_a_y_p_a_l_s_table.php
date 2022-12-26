@@ -15,9 +15,9 @@ class CreateXWEBPAYPALSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_PAYPAL', function (Blueprint $table) {
             $table->id();
-            $table->string('client_id');
-            $table->string('client_secret');
-            $table->string('currency');
+            $table->string('client_id')->nullable();
+            $table->string('client_secret')->nullable();
+            $table->string('currency')->nullable();
         });
     }
 

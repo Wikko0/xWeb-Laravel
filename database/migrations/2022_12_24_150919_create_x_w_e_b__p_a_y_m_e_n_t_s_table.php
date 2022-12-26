@@ -15,12 +15,12 @@ class CreateXWEBPAYMENTSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_PAYMENTS', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_id');
-            $table->string('payer_id');
-            $table->string('payer_email');
-            $table->float('amount', 10, 2);
-            $table->string('currency');
-            $table->string('payment_status');
+            $table->string('payment_id')->nullable();
+            $table->string('payer_id')->nullable();
+            $table->string('payer_email')->nullable();
+            $table->float('amount', 10, 2)->nullable();
+            $table->string('currency')->nullable();
+            $table->string('payment_status')->nullable();
         });
     }
 

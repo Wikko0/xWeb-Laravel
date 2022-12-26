@@ -15,8 +15,8 @@ class CreateXWEBADMINLOGINSTable extends Migration
     {
         Schema::connection('XWEB')->create('XWEB_ADMINLOGIN', function (Blueprint $table) {
             $table->id();
-            $table->string('admin');
-            $table->string('password');
+            $table->string('admin')->nullable();
+            $table->string('password')->nullable();
         });
     }
 
