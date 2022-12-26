@@ -317,7 +317,7 @@ class xController extends Controller
             // Top5 Characters variable
             $topchars.='<tr>'.
                 ' <td>'.++$i.'</td>'.
-                '<td>'.$row -> Name.'</td>'.
+                '<td><a href="/user/'.$row->Name.'">'.$row -> Name.'</a></td>'.
                 '<td>'.$class.'</td>'.
                 '<td>'.$row -> Resets.'</td>'.
 
@@ -537,7 +537,7 @@ class xController extends Controller
             // Output variable
             $output.='<tr>'.
                 ' <td>'.++$i.'</td>'.
-                '<td>'.$row -> Name.'</td>'.
+                '<td><a href="/user/'.$row->Name.'">'.$row -> Name.'</a></td>'.
                 '<td>'.$class.'</td>'.
                 '<td><img src="images/clan-icon.png" alt=""> Warriors</td>'.
                 '<td>'.$row -> Resets.'</td>'.

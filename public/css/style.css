@@ -1735,6 +1735,9 @@ form input {
     height: 32px;
     color: #ffffff;
 }
+.ranking-home table td a {
+    color: #ffffff;
+}
 .ranking-home table .title {
     color: #fee398;
     font-weight: 600;
