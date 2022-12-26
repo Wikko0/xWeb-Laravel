@@ -2062,6 +2062,59 @@ form input {
 .information-table ul li:first-child td:nth-child(1) {
     font-weight: 400;
 }
-.information-table-table ul li:first-child td:nth-child(2) {
-    font-weight: 400;
+
+
+/* User Page
+-----------------------------------------------------------------------------*/
+
+.user-panel {
+    display: flex;
+    justify-content: center;
+}
+.user-panel ul {
+    color: #1e1c2a;
+    margin-bottom: 20px;
+    width: 80%;
+    opacity: 0.8;
+}
+.user-panel ul li {
+    vertical-align: middle;
+    padding: 15px 20px;
+    height: 52px;
+}
+.user-panel ul span {
+    float: right;
+}
+.user-panel ul li {
+    background: #f7f7f7;
+    border: 1px solid #bcbcbc;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+.class-sm {
+    background: url(../images/background/sm.png) right bottom no-repeat;
+
+}
+.class-bk {
+    background: url(../images/background/bk.png) right bottom no-repeat;
+
+}
+.class-elf {
+    background: url(../images/background/elf.png) right bottom no-repeat;
+
+}
+.class-mg {
+    background: url(../images/background/mg.png) right bottom no-repeat;
+}
+.class-sum {
+    background: url(../images/background/sum.png) right bottom no-repeat;
+}
+.class-rf {
+    background: url(../images/background/rf.png) right bottom no-repeat;
+}
+.class-dl {
+    background: url(../images/background/dl.png) right bottom no-repeat;
+}
+.class-gl {
+    background: url(../images/background/gl.png) right bottom no-repeat;
 }

@@ -23,15 +23,15 @@
 
 <div class="top-panel">
     <div class="container top-container flex-c">
-        <a href="/" class="bright"><img src="images/logo-white.png" alt="Logo"></a>
+        <a href="/" class="bright"><img src="{{asset('/images/logo-white.png')}}" alt="Logo"></a>
         <ul class="menu">
-            <li><a href="news">News</a></li>
-            <li class="menu-download"><a href="download">Download</a></li>
-            <li><a href="ranking">Ranking</a></li>
-            <li><a href="register">Register</a></li>
+            <li><a href="/news">News</a></li>
+            <li class="menu-download"><a href="/download">Download</a></li>
+            <li><a href="/ranking">Ranking</a></li>
+            <li><a href="/register">Register</a></li>
 
             @if(session('User'))
-            <li><a href="account-panel" class="acc-panel flex-c">
+            <li><a href="/account-panel" class="acc-panel flex-c">
 
                     My Account</a></li>
         </ul>
@@ -43,7 +43,7 @@
         @endif
 
 
-        <a href="download" class="top-download-button flex-c-c bright">Download</a>
+        <a href="/download" class="top-download-button flex-c-c bright">Download</a>
     </div><!-- container -->
 </div>
 @foreach($announce as $values)
@@ -71,7 +71,7 @@
 
 <footer class="footer">
     <div class="container footer-container flex-c">
-        <a href="/" class="f-logo"><img src="images/logo-white.png" alt=""></a>
+        <a href="/" class="f-logo"><img src="{{asset('/images/logo-white.png')}}" alt="Logo"></a>
         <div class="copyright">
             Copyright {{ date('Y') }} © xWeb. <br>
             <span>© WEBZEN, INC. All rights reserved. MU Online are trademark, services marks, or registered marks of WEBZEN, INC.</span>
