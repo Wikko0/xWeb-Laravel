@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use App\Models\Guild;
 use App\Models\MEMB_INFO;
+use App\Models\MEMB_STAT;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_NEWS;
 use Illuminate\Http\Request;
@@ -314,6 +315,10 @@ class xController extends Controller
 
     public function information()
     {
-        return view('information');
+        $countchar = Character::count();
+        $countacc = MEMB_INFO::count();
+        $countguild = Guild::count();
+        $countonline = MEMB_STAT::where('ConnectStat', 1)->count();
+        return view('information',['countacc' => $countacc,'countchar' => $countchar,'countguild' => $countguild,'countonline' => $countonline]);
     }
 }

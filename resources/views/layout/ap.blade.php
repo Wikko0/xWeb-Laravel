@@ -319,6 +319,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Add Information
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminpanel/information" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Information Manage</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/adminpanel/addinfo" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Information</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-header">Payment System</li>
                     <li class="nav-item">

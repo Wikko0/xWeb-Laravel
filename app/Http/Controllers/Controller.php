@@ -8,6 +8,7 @@ use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
+use App\Models\XWEB_INFORMATION;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PAYPAL;
 use App\Models\XWEB_PAYPAL_PACKAGE;
@@ -40,6 +41,10 @@ class Controller extends BaseController
         $slider = XWEB_SLIDERS::get();
         $hof = XWEB_HOF::get();
         View::share(['admin' => $admin,'adminname' => $adminname, 'announce' => $announce, 'download' => $download, 'event' => $event, 'boss' => $boss, 'slider' => $slider, 'hof' => $hof]);
+
+        /* Information System */
+        $information = XWEB_INFORMATION::get();
+        View::share(['information' => $information]);
 
         /* News System */
         $new_news = XWEB_NEWS::where('specific', '=', 'news')->get();

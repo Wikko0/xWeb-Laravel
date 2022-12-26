@@ -11,6 +11,7 @@ use App\Models\XWEB_ANNOUNCE;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_GRANDRESET;
 use App\Models\XWEB_HOF;
+use App\Models\XWEB_INFORMATION;
 use App\Models\XWEB_NEWS;
 use App\Models\XWEB_PAYPAL;
 use App\Models\XWEB_PAYPAL_PACKAGE;
@@ -645,5 +646,25 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->withSuccess('Successfully deleted package!');
+    }
+
+    public function information()
+    {
+        $db = ['information' => XWEB_INFORMATION::get()];
+        return view('ap.information', $db);
+    }
+
+    public function do_information(Request $request)
+    {
+        XWEB_INFORMATION::where('id', $request->id)
+            ->update([
+                'sname' => $request->sname,
+                'version' => $request->version,
+                'experience' => $request->exp,
+                'droprate' => $request->drop,
+                'zenrate' => $request->zen,
+                'ppl' => $request->ppl
+            ]);
+        return redirect()->back()->withSuccess('You have changed Information successfully!');
     }
 }

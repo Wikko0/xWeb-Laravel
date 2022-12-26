@@ -75,7 +75,9 @@ Route::get('/adminpanel/rename', [AdminController::class, 'rename'])->middleware
 Route::get('/adminpanel/resetstats', [AdminController::class, 'resetstats'])->middleware('admin');
 Route::get('/adminpanel/paypal', [AdminController::class, 'paypal'])->middleware('admin');
 Route::get('/adminpanel/paypal-pack', [AdminController::class, 'paypal_pack'])->middleware('admin');
+Route::get('/adminpanel/information', [AdminController::class, 'information'])->middleware('admin');
 
+Route::post('/adminpanel/information', [AdminController::class, 'do_information']);
 Route::delete('/adminpanel/paypal-pack', [AdminController::class, 'paypal_pack_delete']);
 Route::post('/adminpanel/paypal-pack', [AdminController::class, 'do_paypal_pack']);
 Route::post('/adminpanel/paypal', [AdminController::class, 'do_paypal']);

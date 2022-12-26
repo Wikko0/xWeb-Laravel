@@ -9,35 +9,34 @@ use \App\Http\Controllers\doController;
 <main class="content">
     <h1>Information</h1>
 
-
+@foreach($information as $values)
     <div class="information-table">
         <ul>
             <li>
                 SERVER INFORMATION
             </li>
 
-            <li>Server name <span>xWeb</span> </li>
-            <li>Version <span>Season VI</span> </li>
-            <li>Experience <span>100x</span> </li>
-            <li>Drop Rate <span>20%</span> </li>
-            <li>Zen Drop <span>10%</span> </li>
-            <li>Points Per Level <span>5/7</span> </li>
+            <li>Server name <span>{{$values->sname}}</span> </li>
+            <li>Version <span>{{$values->version}}</span> </li>
+            <li>Experience <span>{{$values->experience}}</span> </li>
+            <li>Drop Rate <span>{{$values->droprate}}</span> </li>
+            <li>Zen Drop <span>{{$values->zenrate}}</span> </li>
+            <li>Points Per Level <span>{{$values->ppl}}</span> </li>
 
         </ul>
 
     </div>
-
+    @endforeach
     <div class="information-table">
         <ul>
             <li>
                 STATISTICS
             </li>
 
-            <li>Total Accounts <span>2</span> </li>
-            <li>Total Characters <span>2</span> </li>
-            <li>Total Guilds <span>2</span> </li>
-            <li>Players Online <span>2</span> </li>
-            <li>Online Record <span>2</span> </li>
+            <li>Total Accounts <span>{{$countacc}}</span> </li>
+            <li>Total Characters <span>{{$countchar}}</span> </li>
+            <li>Total Guilds <span>{{$countguild}}</span> </li>
+            <li>Players Online <span>{{$countonline}}</span> </li>
 
 
         </ul>
