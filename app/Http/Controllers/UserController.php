@@ -228,7 +228,7 @@ class UserController extends Controller
                     ->update($dataToUpdate);
             }
 
-            return redirect()->back()->with('success', 'You have add stats successfully!');
+            return redirect()->back()->withSuccess('You have add stats successfully!');
         }
     }
 
@@ -306,7 +306,7 @@ class UserController extends Controller
 
             }
 
-            return redirect()->back()->with('success', 'You have reset this character successfully!');
+            return redirect()->back()->withSuccess('You have reset this character successfully!');
         }
     }
 
@@ -468,7 +468,7 @@ class UserController extends Controller
                     ]);
             }
 
-            return redirect()->back()->with('success', 'You have reset stats successfully!');
+            return redirect()->back()->withSuccess('You have reset stats successfully!');
         }
     }
 
@@ -478,4 +478,7 @@ class UserController extends Controller
         return view('user.buycredits');
 
     }
+
+
+
 }

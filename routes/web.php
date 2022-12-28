@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\doController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\VipController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\xController;
 /*
@@ -116,6 +117,8 @@ Route::post('/pay', [PaymentController::class, 'pay']);
 Route::get('/success', [PaymentController::class, 'success']);
 Route::get('/error', [PaymentController::class, 'error']);
 
+// VIP System
+Route::post('/getvip', [VipController::class, 'getVip']);
 
 
 
