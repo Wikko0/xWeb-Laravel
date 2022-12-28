@@ -101,13 +101,14 @@
             <input type="hidden" name="days" value="{{$values->days}}">
             <input type="hidden" name="credits" value="{{$values->credits}}">
 
-            <div class="paypal-heading">
-                    <h4 class="paypal-title">
+            <div class="buyvip-heading">
+                    <h4 class="buyvip-title">
 
 
                         <span>{{$values->name}}</span>
+                        <span>{{$values->days}} Days</span>
                         <span>{{$values->credits}} Credits</span>
-                        <span> <button type="submit" class="paybutton">Get VIP</button> </span>
+                        <span> <button type="submit" class="buyvipbutton">Get VIP</button> </span>
                     </h4>
                 </div>
         </form>

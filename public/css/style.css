@@ -2121,3 +2121,48 @@ form input {
 .class-gl {
     background: url(../images/background/gl.png) right bottom no-repeat;
 }
+
+/* PayPal - right manu
+-----------------------------------------------------------------------------*/
+
+.buyvip-heading {
+    padding:15px 15px;
+    background-color:#4d77ae;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.buyvip-title {
+    text-decoration:none;
+    color:white;
+}
+
+.buyvip-title span:nth-child(1) {
+    width:40%;
+    display:inline-block;
+    font-weight:600;
+}
+.buyvip-title span:nth-child(2) {
+    width:35%;
+    display:inline-block;
+}
+.buyvip-title span:nth-child(3) {
+    width:35%;
+    display:inline-block;
+}
+.buyvip-title span:nth-child(4) {
+    float:right;
+}
+.buyvipbutton {
+    background: #4f42a5;
+    width: 100px;
+    padding: 0px 0px 0px 0px;
+    height: 45px;
+    border: none;
+    border-radius: 50px;
+    color: #f7f6fb;
+    font-size: 14px;
+    font-weight: 600;
+}
+.buyvipbutton:hover {
+    background: #614de1;
+}

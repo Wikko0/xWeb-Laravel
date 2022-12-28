@@ -7,9 +7,12 @@ use App\Models\Guild;
 use App\Models\GuildMember;
 use App\Models\MEMB_INFO;
 use App\Models\MEMB_STAT;
+use App\Models\XWEB_ADMINLOGIN;
 use App\Models\XWEB_CHAR_INFO;
+use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_DOWNLOAD;
 use App\Models\XWEB_NEWS;
+use App\Models\XWEB_VIP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -365,6 +368,10 @@ class xController extends Controller
     {
         $userinfo = MEMB_INFO::where('memb___id', '=', session('User'))->first();
         $select = Character::where('AccountID', '=', session('User'))->get();
+        $admincheck = XWEB_ADMINLOGIN::first();
+        $vipcheck = XWEB_VIP::where('account', session('User'))->first();
+        $credits = XWEB_CREDITS::where('name', session('User'))->first();
+
         // Output
         $output="";
         foreach($select as $i=>$row)
@@ -451,8 +458,28 @@ class xController extends Controller
             ;
         }
 
-        return view('user.account-panel', ['UserInfo' => $userinfo, 'output' => $output]);
+        //Rank
+        if ($admincheck->admin == session('User')) {
+            $rank = 'Administrator';
+        }
+        else
+        {
+             $rank = 'User';
+        }
+
+        //Vip
+        if ($vipcheck->account??0 == session('User'))
+        {
+            $vip = 'Activated';
+        }
+        else
+        {
+            $vip = 'None (<a href="/buyvip">Buy Now</a>)';
+        }
+
+        return view('user.account-panel', ['UserInfo' => $userinfo, 'output' => $output, 'rank' => $rank, 'vip' => $vip, 'vipcheck' => $vipcheck, 'credits' => $credits]);
     }
+
     public function download()
     {
         $mb = ['lite'=> XWEB_DOWNLOAD::where('version', '=', 'lite')->first('mb'),

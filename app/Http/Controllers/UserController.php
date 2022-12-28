@@ -479,6 +479,11 @@ class UserController extends Controller
 
     }
 
+    public function buyvip()
+    {
 
+        return view('user.buyvip');
+
+    }
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Character;
+use App\Models\XWEB_CREDITS;
 use App\Models\XWEB_VIP;
 use Illuminate\Http\Request;
 
@@ -25,41 +27,82 @@ class VipController extends Controller
         $now = time();
         $duration = strtotime("$request->days minutes");
         $expirationTime = $this->ExpirationTime($request->days);
+        $account = XWEB_CREDITS::where('Name', $this->account)->first();
+        $credits = $account->credits-$request->credits;
 
         if (!$this->VipData)
         {
-            XWEB_VIP::
-            insert([
-                'account' => $this->account,
-                'bought' => $now,
-                'duration' => $duration,
-                'expires' => $expirationTime,
-            ]);
+            if ($credits < 0)
+            {
+                return redirect()->back()->withErrors('You don\'t have enough credits!');
+            }
+            else
+            {
+                XWEB_VIP::
+                insert([
+                    'account' => $this->account,
+                    'bought' => $now,
+                    'duration' => $duration,
+                    'expires' => $expirationTime,
+                ]);
+                XWEB_CREDITS::where('name', $this->account)
+                    ->update(['credits'=>$credits]);
+
+                return redirect()->back()->withSuccess('You bought VIP Status successfully!');
+            }
+
         }
         else
         {
-            return $this->extendVip($request->days);
+            if ($this->VipData->expires == 'Expired')
+            {
+                XWEB_VIP::where('account', $this->account)
+                ->update([
+                    'bought' => $now,
+                    'duration' => $duration,
+                    'expires' => $expirationTime,
+                ]);
+                XWEB_CREDITS::where('name', $this->account)
+                    ->update(['credits'=>$credits]);
+
+                return redirect()->back()->withSuccess('You bought VIP Status successfully!');
+            }
+            else
+            {
+                return $this->extendVip($request->days,$request->credits);
+            }
+
         }
 
-        return redirect()->back()->withSuccess('You bought VIP Status successfully!');
     }
 
-    private function extendVip($days)
+    private function extendVip($days,$credits)
     {
 
         $now = $this->VipData->bought;
         $duration = $this->VipData->duration + (86400*$days);
         $expirationTime = $this->ExpirationTime($days, $this->VipData->expires);
+        $account = XWEB_CREDITS::where('Name', $this->account)->first();
+        $credits = $account->credits-$credits;
 
-        XWEB_VIP::where('account', $this->account)->
-        UPDATE([
-            'account' => session('User'),
-            'bought' => $now,
-            'duration' => $duration,
-            'expires' => $expirationTime,
-        ]);
+        if ($credits < 0)
+        {
+            return redirect()->back()->withErrors('You don\'t have enough credits!');
+        }
+        else
+        {
+            XWEB_VIP::where('account', $this->account)->
+            UPDATE([
+                'account' => session('User'),
+                'bought' => $now,
+                'duration' => $duration,
+                'expires' => $expirationTime,
+            ]);
+            XWEB_CREDITS::where('name', $this->account)
+                ->update(['credits'=>$credits]);
 
-        return redirect()->back()->withSuccess('You extend VIP Status successfully!');
+            return redirect()->back()->withSuccess('You extend VIP Status successfully!');
+        }
     }
 
     private function removeVip()
@@ -68,7 +111,7 @@ class VipController extends Controller
 
         if ($this->VipData->duration <= $now)
         {
-            XWEB_VIP::where('account', $this->account)->update(['expires' => 'End']);
+            XWEB_VIP::where('account', $this->account)->update(['expires' => 'Expired']);
         }
     }
 

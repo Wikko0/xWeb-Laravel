@@ -35,34 +35,34 @@
                         <table>
                             <tbody>
                             <tr>
-                                <td><img src="images/icons/user.png">
+                                <td><img src="{{asset('images/icons/user.png')}}">
                                 </td>
                                 <td>Account</td>
                                 <td>{{$UserInfo->memb___id}}</td>
                             </tr>
                             <tr>
-                                <td><img src="images/icons/email.png">
+                                <td><img src="{{asset('images/icons/email.png')}}">
                                 </td>
                                 <td>Email</td>
                                 <td>{{$UserInfo->mail_addr}}</td>
                             </tr>
                             <tr>
-                                <td><img src="images/icons/award_star_bronze_1.png">
+                                <td><img src="{{asset('images/icons/rank.png')}}">
                                 </td>
                                 <td>Rank</td>
-                                <td>User</td>
+                                <td>{{$rank}}</td>
                             </tr>
                             <tr>
-                                <td><img src="images/icons/server.png">
-                                </td>
-                                <td>Server</td>
-                                <td>***</td>
-                            </tr>
-                            <tr>
-                                <td><img src="images/icons/shield.png">
+                                <td><img src="{{asset('images/icons/vip.png')}}">
                                 </td>
                                 <td>Vip</td>
-                                <td>None (<a href="https://avroramu.com/shop/vip">Buy Now</a>)</td>
+                                <td>{!! $vip !!}</td>
+                            </tr>
+                            <tr>
+                                <td><img src="{{asset('images/icons/expires.png')}}">
+                                </td>
+                                <td>Vip Expires</td>
+                                <td>{{$vipcheck->expires}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -71,35 +71,18 @@
                         <table>
                             <tbody>
                             <tr>
-                                <td><img src="images/icons/date.png">
+                                <td><img src="{{asset('images/icons/date.png')}}">
                                 </td>
                                 <td>Member Since</td>
                                 <td>{{date('Y-m-d', strtotime($UserInfo->reg_date))}}</td>
                             </tr>
                             <tr>
-                                <td><img src="images/icons/shield.png">
+                                <td><img src="{{asset('images/icons/money.png')}}">
                                 </td>
-                                <td>Last Login</td>
-                                <td>{{date('Y-m-d', strtotime($UserInfo->reg_date))}}</td>
+                                <td>Credits</td>
+                                <td><span style="color: #00bb00">{{$credits->credits}}</span> (<a href="/buycredits">Buy Now</a>)</td>
                             </tr>
-                            <tr>
-                                <td><img src="images/icons/ip.png">
-                                </td>
-                                <td>Register IP</td>
-                                <td>{{$UserInfo->reg_ip}}</td>
-                            </tr>
-                            <tr>
-                                <td><img src="images/icons/ip.png">
-                                </td>
-                                <td>Current Ip</td>
-                                <td>{{Request::ip()}}</td>
-                            </tr>
-                            <tr>
-                                <td><img src="images/icons/lightning.png">
-                                </td>
-                                <td>Vip Expires</td>
-                                <td>Expired</td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>

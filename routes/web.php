@@ -51,6 +51,7 @@ Route::post('/rename', [UserController::class, 'do_rename']);
 Route::get('/resetstats', [UserController::class, 'resetstats'])->middleware('user');
 Route::post('/resetstats', [UserController::class, 'do_resetstats']);
 Route::get('/buycredits', [UserController::class, 'buycredits'])->middleware('user');
+Route::get('/buyvip', [UserController::class, 'buyvip'])->middleware('user');
 
 
 // Admin Panel
