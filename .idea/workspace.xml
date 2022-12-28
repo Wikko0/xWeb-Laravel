@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1526486-f488-4272-bccf-fa988bf4a6af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/ap/vip_pack.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/block/rightblock.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/rightblock.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ap/paypal_pack.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ap/paypal_pack.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/others/modals.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/others/modals.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
@@ -174,15 +177,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/ap" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\xWeb\resources\views" />
       <recent name="C:\xampp\htdocs\xWeb\resources\views\ap" />
+      <recent name="C:\xampp\htdocs\xWeb\resources\views" />
       <recent name="C:\xampp\htdocs\xWeb\resources\views\user" />
       <recent name="C:\xampp\htdocs\xWeb\database\seeders" />
       <recent name="C:\xampp\htdocs\xWeb\public\js" />
@@ -204,7 +207,7 @@
       <updated>1669824114223</updated>
       <workItem from="1669824115443" duration="22709000" />
       <workItem from="1671798444641" duration="51974000" />
-      <workItem from="1672143198774" duration="10981000" />
+      <workItem from="1672143198774" duration="12737000" />
     </task>
     <servers />
   </component>

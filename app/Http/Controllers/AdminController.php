@@ -21,6 +21,7 @@ use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
+use App\Models\XWEB_VIP_PACKAGE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -640,7 +641,7 @@ class AdminController extends Controller
     public function paypal_pack_delete(Request $request)
     {
 
-        foreach ($request->id as $key => $items) {
+        foreach ($request->id as $items) {
 
             XWEB_PAYPAL_PACKAGE::where('id', $items)
                 ->delete();
@@ -683,5 +684,33 @@ class AdminController extends Controller
             ['row' => 1],
             ['information' => $request->information]);
         return redirect()->back()->withSuccess('You have added this information successfully!');
+    }
+
+    public function vip_pack()
+    {
+        $db = ['vip_pack' => XWEB_VIP_PACKAGE::get()];
+        return view('ap.vip_pack', $db);
+    }
+
+    public function do_vip_pack(Request $request)
+    {
+
+        XWEB_VIP_PACKAGE::
+        insert(['name' => $request->name, 'days' => $request->days, 'credits' => $request->credits]);
+
+
+        return redirect()->back()->withSuccess('You have added this package successfully!');
+    }
+
+    public function vip_pack_delete(Request $request)
+    {
+
+        foreach ($request->id as $items) {
+
+            XWEB_VIP_PACKAGE::where('id', $items)
+                ->delete();
+        }
+
+        return redirect()->back()->withSuccess('Successfully deleted package!');
     }
 }

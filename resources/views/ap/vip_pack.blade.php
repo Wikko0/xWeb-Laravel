@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Payment management</h1>
+                        <h1>User management</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Paypal Package</li>
+                            <li class="breadcrumb-item active">VIP Package</li>
                         </ol>
                     </div>
                 </div>
@@ -49,27 +49,34 @@
                         <!-- seo form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Paypal Package</h3>
+                                <h3 class="card-title">VIP Package</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form method="post" action="/adminpanel/paypal-pack">
+                            <form method="post" action="/adminpanel/vip-pack">
                                 @csrf
 
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label>Package name</label>
-                                        <input type="text" class="form-control" name="name">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Package name</label>
+                                            <select name="name" class="form-control">
+                                                <option value="VIP Bronze">VIP Bronze</option>
+                                                <option value="VIP Silver">VIP Silver</option>
+                                                <option value="VIP Gold">VIP Gold</option>
+                                                <option value="VIP Platinum">VIP Platinum</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Amount</label>
-                                        <input type="number" class="form-control" name="amount">
+                                        <label>Days</label>
+                                        <input type="number" class="form-control" name="days">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Credits Reward</label>
+                                        <label>Credits</label>
                                         <input type="number" class="form-control" name="credits">
                                     </div>
 
@@ -103,8 +110,8 @@
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                                @foreach($paypal_pack as $values)
-                                <form method="post" action="/adminpanel/paypal-pack">
+                                @foreach($vip_pack as $values)
+                                <form method="post" action="/adminpanel/vip-pack">
                                     @method('DELETE')
                                     @csrf
 
@@ -121,7 +128,7 @@
                                         </div>
                                         <!-- /btn-group -->
                                         <input type="text" readonly class="form-control" name="name[]" value="{{$values->name}}">
-                                        <input type="text" readonly class="form-control" value="{{$values->amount}}$">
+                                        <input type="text" readonly class="form-control" value="{{$values->days}} Days">
                                         <input type="text" readonly class="form-control" value="{{$values->credits}} Credits">
                                         <input type="hidden" class="form-control" name="id[]" value="{{$values->id}}">
                                     </div>

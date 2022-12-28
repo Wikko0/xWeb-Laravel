@@ -18,6 +18,7 @@ use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
+use App\Models\XWEB_VIP_PACKAGE;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -60,7 +61,8 @@ class Controller extends BaseController
         $pkclear = XWEB_PKCLEAR::get();
         $rename = XWEB_RENAME::get();
         $resetstats = XWEB_RESETSTATS::get();
-        View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear, 'rename' => $rename, 'resetstats' => $resetstats]);
+        $vip_pack = XWEB_VIP_PACKAGE::get();
+        View::share(['reset' => $reset, 'greset' => $greset, 'pkclear' => $pkclear, 'rename' => $rename, 'resetstats' => $resetstats, 'vip_pack' => $vip_pack]);
 
         /* Payments */
         $paypal = XWEB_PAYPAL::get();

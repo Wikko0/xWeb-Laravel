@@ -95,38 +95,23 @@
             <b>Buy</b> <br>
             VIP
         </div>
+        @foreach($vip_pack->take(4) as $values)
         <form action="/getvip" method="post">
             @csrf
-                <div class="paypal-heading">
+            <input type="hidden" name="days" value="{{$values->days}}">
+            <input type="hidden" name="credits" value="{{$values->credits}}">
+
+            <div class="paypal-heading">
                     <h4 class="paypal-title">
 
-            <input type="hidden" name="days" value="2">
 
-                        <span>VIP Buy</span>
-                        <span> <button type="submit" class="paybutton">TEST</button> </span>
+                        <span>{{$values->name}}</span>
+                        <span>{{$values->credits}} Credits</span>
+                        <span> <button type="submit" class="paybutton">Get VIP</button> </span>
                     </h4>
                 </div>
         </form>
-        <form action="/testvip" method="post">
-            @csrf
-            <div class="paypal-heading">
-                <h4 class="paypal-title">
-
-                    <span>VIP Add</span>
-                    <span> <button type="submit" class="paybutton">TEST</button> </span>
-                </h4>
-            </div>
-        </form>
-        <form action="/removevip" method="post">
-            @csrf
-            <div class="paypal-heading">
-                <h4 class="paypal-title">
-
-                    <span>VIP Remove</span>
-                    <span> <button type="submit" class="paybutton">TEST</button> </span>
-                </h4>
-            </div>
-        </form>
+        @endforeach
     </div><!-- modal-block -->
 </div><!-- modal_div -->
 <div id="overlay"></div>
