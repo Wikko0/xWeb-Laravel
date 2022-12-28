@@ -31,10 +31,10 @@
                 <div class="game-events block-bw">
                     <div class="flex-s-c info-text">
                         <div class="block-info-title">
-                            Game
-                            <span>Events</span>
+                            Buy
+                            <span>VIP</span>
                         </div>
-                        <a href="">Learn More</a>
+                        <a href="/buyvip">Learn More</a>
                     </div>
                 </div>
             </div><!-- block-info-left -->
@@ -48,7 +48,7 @@
                 <div class="tab-block">
                     <div class="tab-block-news active tab" id="news">
                         <h2>SEASON XIII! THE NEW VERSION OF MU</h2>
-                        @foreach($news as $new)
+                        @foreach($news->take(5) as $new)
 
                             <a href="/news" title="News" class="news-title"><b>[{{$new->prefix}}]</b> {{$new->subject}}
                                 <span class="news-date">{{$new->date}}</span></a>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="tab-block-news tab" id="eventss">
                         <h2>SEASON XIII! THE NEW VERSION OF MU</h2>
-                        @foreach($events as $event)
+                        @foreach($events->take(5) as $event)
 
                             <a href="/news" title="News" class="news-title"><b>[{{$event->prefix}}
                                     ]</b> {{$event->subject}} <span class="news-date">{{$event->date}}</span></a>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="tab-block-news tab" id="updates">
                         <h2>SEASON XIII! THE NEW VERSION OF MU</h2>
-                        @foreach($updates as $update)
+                        @foreach($updates->take(5) as $update)
 
                             <a href="/news" title="News" class="news-title"><b>[{{$update->prefix}}
                                     ]</b> {{$update->subject}} <span class="news-date">{{$update->date}}</span></a>
@@ -76,10 +76,10 @@
                 <div class="vip block-bw">
                     <div class="flex-s-c info-text">
                         <div class="block-info-title">
-                            Game
-                            <span>Events</span>
+                            Buy
+                            <span>Credits</span>
                         </div>
-                        <a href="">Learn More</a>
+                        <a href="/buycredits">Learn More</a>
                     </div>
                 </div>
                 <div class="pets block-color">

@@ -125,4 +125,3 @@ Route::get('/error', [PaymentController::class, 'error']);
 Route::post('/getvip', [VipController::class, 'getVip']);
 
 
-

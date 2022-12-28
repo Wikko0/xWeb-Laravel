@@ -61,8 +61,8 @@
                             <tr>
                                 <td><img src="{{asset('images/icons/expires.png')}}">
                                 </td>
-                                <td>Vip Expires</td>
-                                <td>{{$vipcheck->expires}}</td>
+                                <td>Expires</td>
+                                <td>{{$vipcheck->expires ?? 'Expired'}}</td>
                             </tr>
                             </tbody>
                         </table>

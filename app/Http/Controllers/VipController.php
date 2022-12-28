@@ -105,17 +105,6 @@ class VipController extends Controller
         }
     }
 
-    private function removeVip()
-    {
-        $now = time();
-
-        if ($this->VipData->duration <= $now)
-        {
-            XWEB_VIP::where('account', $this->account)->update(['expires' => 'Expired']);
-        }
-    }
-
-
     private function ExpirationTime($days, $nowDate="") {
         if($nowDate) {
             return date("Y-m-d H:i:s", strtotime($nowDate)+(86400*$days));
