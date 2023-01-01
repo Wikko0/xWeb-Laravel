@@ -306,7 +306,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
+                            <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Hall Of Fame
                                 <i class="fas fa-angle-left right"></i>
@@ -350,6 +350,24 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Add Vote Reward
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminpanel/votereward" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Vote Package</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
 
                     <li class="nav-header">Payment System</li>
                     <li class="nav-item">

@@ -52,6 +52,7 @@ Route::get('/resetstats', [UserController::class, 'resetstats'])->middleware('us
 Route::post('/resetstats', [UserController::class, 'do_resetstats']);
 Route::get('/buycredits', [UserController::class, 'buycredits'])->middleware('user');
 Route::get('/buyvip', [UserController::class, 'buyvip'])->middleware('user');
+Route::get('/vote-reward', [UserController::class, 'votereward'])->middleware('user');
 
 
 // Admin Panel
@@ -81,7 +82,10 @@ Route::get('/adminpanel/paypal-pack', [AdminController::class, 'paypal_pack'])->
 Route::get('/adminpanel/information', [AdminController::class, 'information'])->middleware('admin');
 Route::get('/adminpanel/addinfo', [AdminController::class, 'addinfo'])->middleware('admin');
 Route::get('/adminpanel/vip-pack', [AdminController::class, 'vip_pack'])->middleware('admin');
+Route::get('/adminpanel/votereward', [AdminController::class, 'votereward'])->middleware('admin');
 
+Route::delete('/adminpanel/votereward', [AdminController::class, 'votereward_delete']);
+Route::post('/adminpanel/votereward', [AdminController::class, 'do_votereward']);
 Route::delete('/adminpanel/vip-pack', [AdminController::class, 'vip_pack_delete']);
 Route::post('/adminpanel/vip-pack', [AdminController::class, 'do_vip_pack']);
 Route::post('/adminpanel/addinfo', [AdminController::class, 'do_addinfo']);

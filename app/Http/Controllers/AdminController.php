@@ -22,6 +22,7 @@ use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
 use App\Models\XWEB_VIP_PACKAGE;
+use App\Models\XWEB_VOTE_PACKAGE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -710,6 +711,64 @@ class AdminController extends Controller
             XWEB_VIP_PACKAGE::where('id', $items)
                 ->delete();
         }
+
+        return redirect()->back()->withSuccess('Successfully deleted package!');
+    }
+
+    public function votereward()
+    {
+        $db = ['votereward' => XWEB_VOTE_PACKAGE::get()];
+        return view('ap.votereward', $db);
+    }
+
+    public function do_votereward(Request $request)
+    {
+
+        $this->validate($request, [
+            'image' => 'dimensions:min_width=70,min_height=25,max_width=100,max_height=60|mimes:jpg,png,gif|required|max:10000',
+            'link' => 'url|required',
+            'zen' => 'required',
+            'credits' => 'required',
+            'time' => 'required',
+        ], ['image.dimensions' => 'Image must be at least 70 x 25 & maximum 100 x 60 pixels']);
+
+        $id = XWEB_VOTE_PACKAGE::latest('id')->first();
+        $last = $id->id ?? 0;
+        $next_id = ++$last;
+        $name = 'vote-img' . $next_id;
+
+        XWEB_VOTE_PACKAGE::insert([
+            'image' => $name,
+            'link' => $request->link,
+            'zen' => $request->zen,
+            'credits' => $request->credits,
+            'time' => $request->time,
+
+        ]);
+
+
+        $makeExtension = $request->file('image')->getClientOriginalExtension();
+        $makeImage = $request->file('image');
+
+        $makeImage->move(public_path() . '/images/', $name .'.'. $makeExtension);
+
+        return redirect()->back()->withSuccess('You have added this package successfully!');
+    }
+
+    public function votereward_delete(Request $request)
+    {
+
+        $name = $request->image;
+        $ImagePath = public_path('images/' . $name);
+        if (File::exists($ImagePath)) {
+            File::delete($ImagePath);
+        }
+        foreach ($request->id as $key => $items) {
+            XWEB_VOTE_PACKAGE::
+            where('id', $items)
+                ->delete();
+        }
+
 
         return redirect()->back()->withSuccess('Successfully deleted package!');
     }

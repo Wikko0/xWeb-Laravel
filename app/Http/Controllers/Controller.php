@@ -19,6 +19,7 @@ use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
 use App\Models\XWEB_VIP_PACKAGE;
+use App\Models\XWEB_VOTE_PACKAGE;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -48,6 +49,10 @@ class Controller extends BaseController
         $information = XWEB_INFORMATION::get();
         $addinfo = XWEB_ADD_INFORMATION::get();
         View::share(['information' => $information, 'addinfo' => $addinfo]);
+
+        /* Vote Reward System */
+        $vote = XWEB_VOTE_PACKAGE::get();
+        View::share(['vote' => $vote]);
 
         /* News System */
         $new_news = XWEB_NEWS::where('specific', '=', 'news')->get();

@@ -486,4 +486,11 @@ class UserController extends Controller
 
     }
 
+    public function votereward()
+    {
+
+        return view('user.votereward');
+
+    }
+
 }

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\RemoveVipCommand' => $baseDir . '/app/Console/Commands/RemoveVipCommand.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
@@ -53,6 +54,7 @@ return array(
     'App\\Models\\XWEB_SLIDERS' => $baseDir . '/app/Models/XWEB_SLIDERS.php',
     'App\\Models\\XWEB_VIP' => $baseDir . '/app/Models/XWEB_VIP.php',
     'App\\Models\\XWEB_VIP_PACKAGE' => $baseDir . '/app/Models/XWEB_VIP_PACKAGE.php',
+    'App\\Models\\XWEB_VOTE_PACKAGE' => $baseDir . '/app/Models/XWEB_VOTE_PACKAGE.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
