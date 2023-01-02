@@ -468,7 +468,10 @@ class xController extends Controller
         }
 
         //Vip
-        if ($vipcheck->account??0 == session('User'))
+        $expires = $vipcheck->expires ?? 'Expired';
+        $account = $vipcheck->account ?? 0;
+
+        if ($expires != 'Expired' && $account == session('User'))
         {
             $vip = 'Activated';
         }
