@@ -736,9 +736,10 @@ class AdminController extends Controller
         $last = $id->id ?? 0;
         $next_id = ++$last;
         $name = 'vote-img' . $next_id;
+        $makeExtension = $request->file('image')->getClientOriginalExtension();
 
         XWEB_VOTE_PACKAGE::insert([
-            'image' => $name,
+            'image' => $name.'.'.$makeExtension,
             'link' => $request->link,
             'zen' => $request->zen,
             'credits' => $request->credits,
@@ -747,7 +748,7 @@ class AdminController extends Controller
         ]);
 
 
-        $makeExtension = $request->file('image')->getClientOriginalExtension();
+
         $makeImage = $request->file('image');
 
         $makeImage->move(public_path() . '/images/', $name .'.'. $makeExtension);

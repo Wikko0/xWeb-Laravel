@@ -53,6 +53,7 @@ Route::post('/resetstats', [UserController::class, 'do_resetstats']);
 Route::get('/buycredits', [UserController::class, 'buycredits'])->middleware('user');
 Route::get('/buyvip', [UserController::class, 'buyvip'])->middleware('user');
 Route::get('/vote-reward', [UserController::class, 'votereward'])->middleware('user');
+Route::post('/vote-reward', [UserController::class, 'do_votereward']);
 
 
 // Admin Panel

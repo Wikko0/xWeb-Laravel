@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\MEMB_INFO;
 use App\Models\XWEB_ADDSTATS;
 use App\Models\XWEB_CHAR_INFO;
 use App\Models\XWEB_CREDITS;
@@ -11,6 +12,7 @@ use App\Models\XWEB_PKCLEAR;
 use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
+use App\Models\XWEB_VOTE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -18,7 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class UserController extends Controller
 {
 
-   public function pklevel($value, $view=0)
+    public function pklevel($value, $view = 0)
     {
         $pklevel = array(
             0 => array('Hero'),
@@ -35,42 +37,34 @@ class UserController extends Controller
     private function online($char)
     {
         $id = Character::where('Name', '=', $char)->first();
-        $check =  DB::table('MEMB_STAT')->where('memb___id', '=', $id->AccountID)->first();
+        $check = DB::table('MEMB_STAT')->where('memb___id', '=', $id->AccountID)->first();
         $check2 = DB::table('AccountCharacter')->where('id', '=', $id->AccountID)->first();
 
 
-        if(!$check)
-        {
+        if (!$check) {
             return 1;
-        }
-        elseif($check->ConnectStat >= 1)
-        {
+        } elseif ($check->ConnectStat >= 1) {
             return 1;
-        }
-        elseif($check->ConnectStat >= 1 && $check2->GameIDC == $char)
-        {
+        } elseif ($check->ConnectStat >= 1 && $check2->GameIDC == $char) {
             return 1;
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }
+
     public function reset()
     {
 
-        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
+        $data = ['char' => Character::where('AccountID', '=', session('User'))->get()];
         return view('user.reset', $data);
 
     }
 
     public function do_reset(Request $request)
     {
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $online = $this->online($request->char);
             $select = Character::where('Name', '=', $request->char)->first();
             $reset = XWEB_RESET::first();
@@ -137,14 +131,12 @@ class UserController extends Controller
                 return redirect()->back()->withErrors('You don\'t have enough zen!');
             } elseif ($select->Resets >= $reset->maxresets) {
                 return redirect()->back()->withErrors('You\'re Max Resets!');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::
-                    where('Name', '=', $request->char)
+                where('Name', '=', $request->char)
                     ->update([
                         'Resets' => DB::raw('Resets+1'),
                         'Strength' => 25,
@@ -165,7 +157,7 @@ class UserController extends Controller
     public function addstats()
     {
 
-        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
+        $data = ['char' => Character::where('AccountID', '=', session('User'))->get()];
         return view('user.add-stats', $data);
 
     }
@@ -174,11 +166,9 @@ class UserController extends Controller
     {
 
 
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $select = Character::where('Name', '=', $request->char)->first();
             $addstats = XWEB_ADDSTATS::first();
             $newpoints = $select->LevelUpPoint - ($request->str + $request->agi + $request->vit + $request->ene);
@@ -209,20 +199,15 @@ class UserController extends Controller
             // Verification
             if ($newpoints < 0) {
                 return redirect()->back()->withErrors('You don\'t have enough points!');
-            }
-            elseif ($newstr > $maxpoints or $newagi > $maxpoints or $newvit > $maxpoints or $newene > $maxpoints or $newcom > $maxpoints) {
+            } elseif ($newstr > $maxpoints or $newagi > $maxpoints or $newvit > $maxpoints or $newene > $maxpoints or $newcom > $maxpoints) {
                 return redirect()->back()->withErrors('Max stats is ' . $maxpoints . '!');
-            }
-            elseif ($dl === 0 && $request->com != 0) {
+            } elseif ($dl === 0 && $request->com != 0) {
                 return redirect()->back()->withErrors('Тhe character doesn\'t use a command');
-            }
-            elseif ($request->str < 0 OR $request->agi < 0 OR $request->vit < 0 OR $request->ene < 0 OR $request->com < 0) {
+            } elseif ($request->str < 0 or $request->agi < 0 or $request->vit < 0 or $request->ene < 0 or $request->com < 0) {
                 return redirect()->back()->withErrors('Invalid symbols');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::where('Name', '=', $request->char)
                     ->update($dataToUpdate);
@@ -235,18 +220,16 @@ class UserController extends Controller
     public function grandreset()
     {
 
-        $data = ['char'=> Character::where('AccountID', '=', session('User'))->get()];
+        $data = ['char' => Character::where('AccountID', '=', session('User'))->get()];
         return view('user.grandreset', $data);
 
     }
 
     public function do_grandreset(Request $request)
     {
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $online = $this->online($request->char);
             $select = Character::where('Name', '=', $request->char)->first();
             $credits = XWEB_CREDITS::where('name', '=', $select->AccountID)->first();
@@ -266,11 +249,9 @@ class UserController extends Controller
                 return redirect()->back()->withErrors('You\'re Not Max Resets!');
             } elseif ($select->Resets < $greset->maxgresets) {
                 return redirect()->back()->withErrors('You\'re Not Max Resets!');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::
                 where('Name', '=', $request->char)
@@ -286,18 +267,15 @@ class UserController extends Controller
                         'cLevel' => 1
                     ]);
                 XWEB_CREDITS::
-                    update(['credits' => $newcredits,
-                    ]);
-                if (empty($charinfo->name))
-                {
+                update(['credits' => $newcredits,
+                ]);
+                if (empty($charinfo->name)) {
                     XWEB_CHAR_INFO::
-                        insert([
-                            'name' => $request->char,
-                            'gresets' => 1
-                        ]);
-                }
-                else
-                {
+                    insert([
+                        'name' => $request->char,
+                        'gresets' => 1
+                    ]);
+                } else {
                     XWEB_CHAR_INFO::
                     where('name', '=', $request->char)
                         ->update(['gresets' => DB::raw('gresets+1'),
@@ -314,17 +292,15 @@ class UserController extends Controller
     {
 
         $char = Character::where('AccountID', '=', session('User'))->get();
-        return view('user.clearpk', ['char'=>$char, 'pk' => $this]);
+        return view('user.clearpk', ['char' => $char, 'pk' => $this]);
 
     }
 
     public function do_clearpk(Request $request)
     {
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $online = $this->online($request->char);
             $select = Character::where('Name', '=', $request->char)->first();
             $zen = XWEB_PKCLEAR::first();
@@ -336,14 +312,11 @@ class UserController extends Controller
             // Verification
             if ($newzen < 0) {
                 return redirect()->back()->withErrors('You don\'t have enough zen!');
-            }
-            elseif ($select->PkCount == 0) {
+            } elseif ($select->PkCount == 0) {
                 return redirect()->back()->withErrors('You don\'t have kills yet!');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::
                 where('Name', '=', $request->char)
@@ -363,17 +336,15 @@ class UserController extends Controller
     {
 
         $char = Character::where('AccountID', '=', session('User'))->get();
-        return view('user.rename', ['char'=>$char]);
+        return view('user.rename', ['char' => $char]);
 
     }
 
     public function do_rename(Request $request)
     {
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $this->validate($request, [
                 'name' => 'unique:Character,Name|min:3|max:8'
             ]);
@@ -387,11 +358,9 @@ class UserController extends Controller
             // Verification
             if ($cost < 0) {
                 return redirect()->back()->withErrors('You don\'t have enough credits!');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::
                 where('Name', '=', $request->char)
@@ -413,17 +382,15 @@ class UserController extends Controller
     {
 
         $char = Character::where('AccountID', '=', session('User'))->get();
-        return view('user.resetstats', ['char'=>$char]);
+        return view('user.resetstats', ['char' => $char]);
 
     }
 
     public function do_resetstats(Request $request)
     {
-        if (empty($request->char))
-        {
+        if (empty($request->char)) {
             return redirect()->back()->withErrors('Choose character first!');
-        }
-        else {
+        } else {
             $online = $this->online($request->char);
             $select = Character::where('Name', '=', $request->char)->first();
             $fee = XWEB_RESETSTATS::first();
@@ -436,20 +403,15 @@ class UserController extends Controller
             // Verification
             if ($newcredits < 0) {
                 return redirect()->back()->withErrors('You don\'t have enough credits!');
-            }
-            elseif ($select->cLevel < $fee->level) {
+            } elseif ($select->cLevel < $fee->level) {
                 return redirect()->back()->withErrors('You don\'t have enough levels!');
-            }
-            elseif ($select->Resets < $fee->resets) {
+            } elseif ($select->Resets < $fee->resets) {
                 return redirect()->back()->withErrors('You don\'t have enough resets!');
-            }
-            elseif ($newzen < 0) {
+            } elseif ($newzen < 0) {
                 return redirect()->back()->withErrors('You don\'t have enough zen!');
-            }
-            elseif ($online === 1) {
+            } elseif ($online === 1) {
                 return redirect()->back()->withErrors('Leave game first!');
-            }
-            // Update
+            } // Update
             else {
                 Character::
                 where('Name', '=', $request->char)
@@ -493,4 +455,44 @@ class UserController extends Controller
 
     }
 
+    public function do_votereward(Request $request)
+    {
+        $account = MEMB_INFO::where('memb___id', session('User'))->first();
+        $credits = XWEB_CREDITS::where('name', '=', $account->memb___id)->first();
+        $vote = XWEB_VOTE::where('account', session('User'))->get();
+        $warehouse = DB::table('warehouse')->where('AccountID', $account->memb___id)->first();
+        $newmoney = $warehouse->Money??0 + $request->zen;
+        $newcredits = $credits->credits + $request->credits;
+
+        $time = $request->time * 3600;
+        $newtime = $time + time();
+        $checktime=$vote->time-time();
+        $votecheck = $vote->voteid;
+
+        if (!$warehouse) {
+            return redirect()->back()->withErrors('You don\'t have warehouse yet!');
+        } elseif ($checktime>0) {
+            return redirect()->back()->withErrors('You have already voted in the last ' .$request->time. ' hours.');
+        }else{
+
+            XWEB_VOTE::insert([
+                'voteid' => $request->id,
+                'account' => session('User'),
+                'time' => $newtime,
+                'ip' => $_SERVER['REMOTE_ADDR']
+            ]);
+        XWEB_VOTE::where('name', $account->memb___id);
+        DB::table('warehouse')->where('AccountID', $account->memb___id)
+            ->update([
+                'Money' => $newmoney,
+            ]);
+        XWEB_CREDITS::
+        where('name', '=', $account->memb___id)
+            ->update([
+                'credits' => $newcredits
+            ]);
+    }
+
+        return redirect()->back()->withSuccess('You have voted successfully!');
+    }
 }

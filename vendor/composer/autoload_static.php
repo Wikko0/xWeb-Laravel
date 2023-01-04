@@ -615,6 +615,7 @@ class ComposerStaticInitdae46b3561dce6090141f242c22051d3
         'App\\Models\\XWEB_SLIDERS' => __DIR__ . '/../..' . '/app/Models/XWEB_SLIDERS.php',
         'App\\Models\\XWEB_VIP' => __DIR__ . '/../..' . '/app/Models/XWEB_VIP.php',
         'App\\Models\\XWEB_VIP_PACKAGE' => __DIR__ . '/../..' . '/app/Models/XWEB_VIP_PACKAGE.php',
+        'App\\Models\\XWEB_VOTE' => __DIR__ . '/../..' . '/app/Models/XWEB_VOTE.php',
         'App\\Models\\XWEB_VOTE_PACKAGE' => __DIR__ . '/../..' . '/app/Models/XWEB_VOTE_PACKAGE.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

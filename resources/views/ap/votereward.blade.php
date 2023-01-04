@@ -111,7 +111,7 @@
                                                 @csrf
                                                 <input type="hidden" name="id[]" value="{{$values->id}}">
                                                 <input type="hidden" name="image" value="{{$values->image}}">
-                                            <img src="/images/{{$values->image}}.jpg" alt="Image" class="img-fluid">
+                                            <img src="/images/{{$values->image}}" alt="Image" class="img-fluid">
 
                                             <div class="ribbon-wrapper ribbon-xl">
                                                 <button class="ribbon bg-danger text-xl">
