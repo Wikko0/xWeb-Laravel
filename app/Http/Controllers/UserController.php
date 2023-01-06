@@ -13,6 +13,7 @@ use App\Models\XWEB_RENAME;
 use App\Models\XWEB_RESET;
 use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_VOTE;
+use App\Models\XWEB_VOTE_PACKAGE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -451,7 +452,66 @@ class UserController extends Controller
     public function votereward()
     {
 
-        return view('user.votereward');
+
+        $vote = XWEB_VOTE_PACKAGE::get();
+
+        foreach ($vote as $i => $value)
+        {
+            $test= XWEB_VOTE::where([
+                ['account', session('User')],
+                ['time', '>', time()],
+                ['voteid', $value->id]
+            ])->orderBy('id')->first();
+
+
+            if (!$test)
+                {
+                    $output[]='<form action="/vote-reward" method="post">'.
+                        '<input type="hidden" name="_token" value="'.csrf_token().'" />'.
+
+                        '<input type="hidden" name="id" value="'.$value->id.'">'.
+                        '<input type="hidden" name="zen" value="'.$value->zen.'">'.
+                        '<input type="hidden" name="credits" value="'.$value->credits.'">'.
+                        '<input type="hidden" name="time" value="'.$value->time.'">'.
+                        '<div class="vote-heading">'.
+                        '<h4 class="vote-title">'.
+
+                        '<span><img src="images/'.$value->image.'" width="80px;" height="50px;"></span>'.
+                        '<span>'.$value->credits.' Credits</span>'.
+                        '<span>'.$value->zen.' Zen</span>'.
+                        '<span>'.$value->time.' Time</span>'.
+
+                        '<span> <button type="submit" class="votebutton">VOTE</button> </span>'.
+                        '</h4>'.
+                        '</div>'.
+                        '</form>';
+                }else
+                {
+                    $output[]='<form action="/vote-reward" method="post">'.
+                        '<input type="hidden" name="_token" value="'.csrf_token().'" />'.
+
+                        '<input type="hidden" name="id" value="'.$value->id.'">'.
+                        '<input type="hidden" name="zen" value="'.$value->zen.'">'.
+                        '<input type="hidden" name="credits" value="'.$value->credits.'">'.
+                        '<input type="hidden" name="time" value="'.$value->time.'">'.
+                        '<div class="vote-heading">'.
+                        '<h4 class="vote-title">'.
+
+                        '<span><img src="images/'.$value->image.'" width="80px;" height="50px;"></span>'.
+                        '<span>'.$value->credits.' Credits</span>'.
+                        '<span>'.$value->zen.' Zen</span>'.
+                        '<span>'.$value->time.' Time</span>'.
+
+                        '<span> haha </span>'.
+                        '</h4>'.
+                        '</div>'.
+                        '</form>';
+                }
+
+
+        }
+
+        return view('user.votereward', ['output' => $output]);
 
     }
 
@@ -459,7 +519,7 @@ class UserController extends Controller
     {
         $account = MEMB_INFO::where('memb___id', session('User'))->first();
         $credits = XWEB_CREDITS::where('name', '=', $account->memb___id)->first();
-        $vote = XWEB_VOTE::where('account', session('User'))->get();
+        $vote = XWEB_VOTE::where('account', session('User'))->first();
         $warehouse = DB::table('warehouse')->where('AccountID', $account->memb___id)->first();
         $newmoney = $warehouse->Money??0 + $request->zen;
         $newcredits = $credits->credits + $request->credits;
