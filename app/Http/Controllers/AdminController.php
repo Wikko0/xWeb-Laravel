@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\MEMB_INFO;
+use App\Models\MEMB_STAT;
 use App\Models\XWEB_ADD_INFORMATION;
 use App\Models\XWEB_ADDSTATS;
 use App\Models\XWEB_ADMINCP;
@@ -23,6 +24,7 @@ use App\Models\XWEB_RESETSTATS;
 use App\Models\XWEB_SLIDERS;
 use App\Models\XWEB_VIP_PACKAGE;
 use App\Models\XWEB_VOTE_PACKAGE;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
@@ -39,9 +41,14 @@ class AdminController extends Controller
 
             $accinfo = MEMB_INFO::count();
             $charinfo = Character::count();
+            $online = MEMB_STAT::where('ConnectStat', 1)->count();
+            $today = MEMB_STAT::where([
+                ['ConnectStat', 1],
+                ['ConnectTM', '>', Carbon::now()->subDays(1)],
+            ])->count();
 
 
-            return view('ap.home', ['accinfo' => $accinfo, 'charinfo' => $charinfo]);
+            return view('ap.home', ['accinfo' => $accinfo, 'charinfo' => $charinfo, 'online' => $online, 'today' => $today]);
         } else {
             return redirect('adminpanel/login');
         }
