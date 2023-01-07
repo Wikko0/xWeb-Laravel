@@ -2201,7 +2201,24 @@ form input {
 .vote-title span:nth-child(5) {
     float:right;
 }
+.vote-title p:nth-child(1) {
+    float:right;
+}
 .votebutton {
+    background: #4f42a5;
+    width: 100px;
+    padding: 10px 0px 0px 0px;
+    height: 45px;
+    border: none;
+    border-radius: 50px;
+    color: #f7f6fb;
+    font-weight: 600;
+    text-align: center;
+}
+.votebutton:hover {
+    background: #614de1;
+}
+.votebuttonalready {
     background: #4f42a5;
     width: 100px;
     padding: 0px 0px 0px 0px;
@@ -2209,9 +2226,9 @@ form input {
     border: none;
     border-radius: 50px;
     color: #f7f6fb;
-    font-size: 14px;
     font-weight: 600;
+    text-align: center;
 }
-.votebutton:hover {
+.votebuttonalready:hover {
     background: #614de1;
 }

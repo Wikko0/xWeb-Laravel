@@ -451,11 +451,10 @@ class UserController extends Controller
 
     public function votereward()
     {
-
-
+        $output[]='';
         $vote = XWEB_VOTE_PACKAGE::get();
 
-        foreach ($vote as $i => $value)
+        foreach ($vote as $value)
         {
             $test= XWEB_VOTE::where([
                 ['account', session('User')],
@@ -466,7 +465,7 @@ class UserController extends Controller
 
             if (!$test)
                 {
-                    $output[]='<form action="/vote-reward" method="post">'.
+                    $output[]='<form action="/vote-reward" method="post" id="vote-form">'.
                         '<input type="hidden" name="_token" value="'.csrf_token().'" />'.
 
                         '<input type="hidden" name="id" value="'.$value->id.'">'.
@@ -481,7 +480,7 @@ class UserController extends Controller
                         '<span>'.$value->zen.' Zen</span>'.
                         '<span>'.$value->time.' Time</span>'.
 
-                        '<span> <button type="submit" class="votebutton">VOTE</button> </span>'.
+                        ' <a href="'.$value->link.'" onclick="document.getElementById(\'vote-form\').submit();" target="_blank"><p class="votebutton">VOTE</p></a> '.
                         '</h4>'.
                         '</div>'.
                         '</form>';
@@ -502,12 +501,11 @@ class UserController extends Controller
                         '<span>'.$value->zen.' Zen</span>'.
                         '<span>'.$value->time.' Time</span>'.
 
-                        '<span> haha </span>'.
+                        '<span class="votebuttonalready">Already voted</span>'.
                         '</h4>'.
                         '</div>'.
                         '</form>';
                 }
-
 
         }
 
