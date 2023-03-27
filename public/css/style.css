@@ -2232,3 +2232,33 @@ form input {
 .votebuttonalready:hover {
     background: #614de1;
 }
+/* Online Players
+-----------------------------------------------------------------------------*/
+.online{
+    color: green;
+}
+.online {
+    position: absolute;
+    bottom: 50px;
+    left: 110px;
+}
+
+.onlineBlock { margin: 0px 25px; position: relative; }
+.onlineBlock:after { content: ""; position: absolute; width: 157px; height: 148px; left: 50%; margin-left: -94px; top: -79px; z-index: 3; }
+.onlineBlock:before { content: ""; position: absolute; width: 215px; height: 215px; left: 50%; margin-left: -109px; top: -88px; z-index: 3; animation: 12s anim linear infinite; }
+
+.onlineBlock-purple:after { background: url(../images/server-icon-purple.png); }
+.onlineBlock-purple:before { background: url(../images/blue-anim.png); }
+.onlineBlock-purple .online-text { color: #9eec67; }
+
+@keyframes anim { 0% { transform: rotate(360deg); }
+    100% { transform: rotate(-360deg); } }
+.circlestat { transform: rotate(-90deg); }
+
+.circle { overflow: hidden; height: 102px; }
+
+.oBlock { text-align: center; position: absolute; width: 100%; top: 64px; z-index: 1; color: #fff; }
+
+.online-text { font-size: 36px; font-weight: bold; margin-bottom: 5px; }
+
+.online-rait { font-size: 18px; }

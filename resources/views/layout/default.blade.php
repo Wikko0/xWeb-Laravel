@@ -64,7 +64,27 @@
 <header class="header">
 
     <div class="container header-container flex-c-c">
+        <div class="online flex-c">
+
+            <div class="onlineBlock onlineBlock-purple">
+                <div class="oBlock">
+                    <div class="online-text">
+                        2
+                    </div>
+                    <div class="online-rait">
+                        Online
+                    </div>
+                </div>
+                <div class="circle">
+                    <div class="circlestat" data-dimension="205" data-width="10" data-fontsize="12" data-percent="40" data-fgcolor="#A466CE" data-bgcolor="rgba(0, 0, 0, 0.3)"></div>
+                </div>
+            </div><!--onlineBlock-->
+
+        </div><!--online-->
     </div><!-- container -->
+
+
+
 </header><!-- header -->
 
 @yield('content')
@@ -111,5 +131,6 @@
         });
     });
 </script>
+<script src="{{asset('js/circle-js.js')}}"></script>
 </body>
 </html>
