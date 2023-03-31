@@ -7,6 +7,7 @@
     <title>{{$head->stitle}}</title>
     <meta name="keywords" content="{{$head->skeywords}}" />
     <meta name="description" content="{{$head->sdescription}}" />
+    <link rel="favicon" href="{{asset('favicon.ico')}}" />
     <meta name="viewport" content="width=1280, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
