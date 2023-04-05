@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MEMB_STAT;
 use App\Models\XWEB_ADD_INFORMATION;
 use App\Models\XWEB_ADMINCP;
 use App\Models\XWEB_ADMINLOGIN;
@@ -53,6 +54,10 @@ class Controller extends BaseController
         /* Vote Reward System */
         $vote = XWEB_VOTE_PACKAGE::get();
         View::share(['vote' => $vote]);
+
+        /* Vote Reward System */
+        $onlinePlayers = MEMB_STAT::where('ConnectStat', 1)->count();
+        View::share(['onlinePlayers' => $onlinePlayers]);
 
         /* News System */
         $new_news = XWEB_NEWS::where('specific', '=', 'news')->get();

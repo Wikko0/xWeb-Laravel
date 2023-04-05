@@ -80,7 +80,7 @@
                                 <td><img src="{{asset('images/icons/money.png')}}">
                                 </td>
                                 <td>Credits</td>
-                                <td><span style="color: #00bb00">{{$credits->credits}}</span> (<a href="/buycredits">Buy Now</a>)</td>
+                                <td><span style="color: #00bb00">{{$credits->credits??'0'}}</span> (<a href="/buycredits">Buy Now</a>)</td>
                             </tr>
 
                             </tbody>

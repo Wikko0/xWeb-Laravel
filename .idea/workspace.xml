@@ -3,21 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a1098753-f691-499d-af18-24a067d8002e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/img1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/ap.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/installer.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/installer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/account-panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account-panel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/event_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/public/event_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/rachidlaasri/laravel-installer/src/Config/installer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/rachidlaasri/laravel-installer/src/Config/installer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/rachidlaasri/laravel-installer/src/Helpers/EnvironmentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/rachidlaasri/laravel-installer/src/Helpers/EnvironmentManager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +203,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679927034136</updated>
-      <workItem from="1679927035426" duration="20273000" />
+      <workItem from="1679927035426" duration="27499000" />
     </task>
     <servers />
   </component>
